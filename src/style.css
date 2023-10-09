@@ -16,3 +16,8 @@
 .Sidebar-border{
     border-right: 4px solid #F18701;
 }
+.logout{
+    /* height: 100%; */
+    margin-top: 300px ;
+    /* display: none; */
+}

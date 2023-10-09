@@ -75,9 +75,9 @@ const SideBar = () => {
                 }
                 </div>
             </div>
-            <div className="text-center text-gray-500 mt-auto">
+            <div className="text-center text-gray-500 logout border-t-2 py-6">
                    
-             <button>
+             <button >
                <i className="fa fa-logout"></i> Logout
              </button>
             </div>

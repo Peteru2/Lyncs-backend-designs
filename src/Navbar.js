@@ -1,4 +1,5 @@
 import ProImg from "./images/ProImg.svg"
+
 const Navbar = () => {
     return ( 
         <>
@@ -11,7 +12,7 @@ const Navbar = () => {
                 </div>
                 <div className="ml-auto flex  items-center">
                         <div className="mr-4">
-                            <i className="fa fa-bell text-black"></i>
+                            <i className="fa fa-bell font-bold text-black"></i>
                         </div>
                         <img src={ProImg} className="fa fa-bell text-black mr-4"/>
                         <p className="mr-2">Nebuchi Nwadiogbu</p>
