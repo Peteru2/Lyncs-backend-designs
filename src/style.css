@@ -1,8 +1,18 @@
+
+
 .cont{
     height: 100vh;
-    
 }
 .sideBar{
     height: 100%;
     /* display: none; */
+}
+.bg_color{
+    background-color: #F18701;
+}
+.text_color{
+    color:#F18701;
+}
+.Sidebar-border{
+    border-right: 4px solid #F18701;
 }
