@@ -25,7 +25,7 @@ const PendOrder = () => {
                     <div className="mx-6 my-4 ">
                         <h3 className="text-2xl mt-2">Overview</h3>
                         <h2 className="my-3">Pending Orders</h2>
-                        <div className="bg-white overflow-x-scroll max-x-[900px]">
+                        <div className="bg-white pendingOrder ">
                         <div className="grid grid-cols-8 text-white bg_color h-10 px-2 text-sm rounded-t-md items-center">
                         <p>S/N</p>
                         <p>Source</p>

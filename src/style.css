@@ -1,5 +1,7 @@
 
-
+body{
+    overflow-x: hidden;
+}
 .cont{
     height: 100vh;
 }
@@ -42,4 +44,10 @@
     100% {
       background-position: 200% 0;
     }
+  }
+  .pendingOrder{
+    width: 100%;
+    max-width: 160%;
+    overflow-x: scroll
+    ;
   }
