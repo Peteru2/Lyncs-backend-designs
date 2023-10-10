@@ -1,27 +1,63 @@
 import LoginImg from "./images/Frame 279.png"
-
+import Facebook from "./images/Facebook.svg"
+import Google from "./images/Google.svg"
 const Login = () => {
     return ( 
         <>
             <section>
-                <div className="flex w-full Loginpage ">
-                    <div className="flex   LoginPage1 justify-center">
+                <div className=" loginpage ">
+                    
+                    <div className="LoginPage1 pt-60 justify-center">
                         <div>
                             <img src={LoginImg} alt="loginImg" />
                         </div>
+                        <div>
+                            <div className="parentLoginStyle">
+                                <div className="loginStyle1"></div>
+                                <div className="loginStyle2"></div>
+
+                            </div>
+                        </div>
                     </div>
-                    <div className="LoginPage2 flex justify-center">
+                    <div className="LoginPage2  p-32 justify-center">
                         <div className="w-96">
                             <h2 className="font-bold">Login to backend</h2>
                             <h2 className="text-gray-500 text-sm mt-1">Fill in the appropriate details</h2>
 
-                            <div className="mt-6">
+                            <div className="mt-6 w-full">
                                 <form>
                                     <div>
-                                        <label className="text-sm font-bold mb-1">Email</label>
+                                        <label className="text-sm font-bold mb-2">Email</label>
                                         <div className="border-2 p-1 rounded-md">
-                                            <input type="text"   className="w-full"/>
+                                            <input type="text"   className="w-full outline-none"/>
                                         </div>
+                                    </div>
+
+                                    <div className="mt-4 w-full">
+                                        <label className="text-sm font-bold mb-2">Password</label>
+                                        <div className="border-2 p-1 rounded-md">
+                                            <input type="password"   className="w-full outline-none"/>
+                                        </div>
+                                        <p className="w-full ml-auto text_color text-sm mt-2">Forget password?</p>
+                                    </div>
+
+                                    <div className="mt-12">
+                                        <button className="text-center w-full p-2 text-white bg_color rounded-md ">Login</button>
+                                    </div>
+                                    <p className="text-center mt-4">Don't have an account? <span className="text_color">Sign Up</span></p>
+                                    <div className="flex items-center justify-between w-full mt-3">
+                                        <div className="border-b-2 w-full"></div>
+                                        <p className="font-bold text-sm mx-1">Or</p>
+                                        <div className="border-b-2 w-full"></div>
+
+                                    </div>
+                                    <div className="flex justify-center mt-4">
+                                            <div className="mx-2">
+                                                <img src={Facebook} alt="Facebook" />
+                                            </div>
+                                            <div className="mx-2">
+                                                <img src={Google} alt="Google" />
+                                            </div>
                                     </div>
                                 </form>
                             </div>

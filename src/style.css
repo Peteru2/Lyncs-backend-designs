@@ -1,6 +1,8 @@
 
 body{
     overflow-x: hidden;
+    margin:0;
+    padding:0
 }
 .cont{
     height: 100vh;
@@ -53,15 +55,54 @@ body{
     ;
   }
   .loginpage{
+      display: flex;
+      flex-direction: row;
       height: 100vh;
+      width: 100%;
   }
   .LoginPage1{
+    display: flex;
     width: 50%;
     height: 100%;
     background-color: #F18701;
   }
   .LoginPage2{
+    display: flex;
     width: 50%;  
     height: 100%;
     background-color: white;
   }
+  .parentLoginStyle{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    top:80px;
+    left: -60px
+  }
+  .loginStyle1{
+    width:340.56px;
+    height:130.56px;
+    /* left:3.80px; */
+    top: 0px;
+    position: absolute;
+    transform: rotate(60.38deg);
+    transform-origin: 0 0;
+    border-radius: 60.91px; 
+
+    border:20.45px #F6AF56 solid
+  }
+  .loginStyle2{
+    width:130.54px;
+    height:340.56px;
+    /* left:0px; */
+    top: 14.33px;
+    position: absolute;
+    border-radius: 60.91px; 
+    border: 20.45px #F6AF56 solid;
+    transform: rotate(35.38deg);
+
+    
+  }
+
+  
