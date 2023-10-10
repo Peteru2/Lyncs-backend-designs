@@ -1,5 +1,4 @@
 import ProImg from "./images/ProImg.svg"
-
 const Navbar = () => {
     return ( 
         <>
@@ -14,7 +13,7 @@ const Navbar = () => {
                         <div className="mr-4">
                             <i className="fa fa-bell font-bold text-black"></i>
                         </div>
-                        <img src={ProImg} className="fa fa-bell text-black mr-4"/>
+                        <img src={ProImg} alt="profileImage" className="fa fa-bell text-black mr-4"/>
                         <p className="mr-2">Nebuchi Nwadiogbu</p>
                 </div>
             </nav>

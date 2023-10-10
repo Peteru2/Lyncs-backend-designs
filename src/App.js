@@ -1,5 +1,7 @@
 
 import Dashboard from './Dashboard';
+import PendOrder from './PendOrder';
+
 
 import { Route, Routes } from 'react-router-dom';
 import "./style.css"
@@ -10,8 +12,9 @@ function App() {
     <Routes>
         {/* <Route path={'/'} element={<OverView />} /> */}
         <Route path={'/'} element={<Dashboard />} />
-    </Routes>
-    </>
+        <Route path={'/pending'} element={<PendOrder />} />
+    </Routes>      
+      </>
   );
 }
 
