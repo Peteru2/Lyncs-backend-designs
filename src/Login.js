@@ -1,7 +1,11 @@
 import LoginImg from "./images/Frame 279.png"
 import Facebook from "./images/Facebook.svg"
 import Google from "./images/Google.svg"
+import LoginForm from "./LoginForm";
+
 const Login = () => {
+
+
     return ( 
         <>
             <section>
@@ -25,25 +29,8 @@ const Login = () => {
                             <h2 className="text-gray-500 text-sm mt-1">Fill in the appropriate details</h2>
 
                             <div className="mt-6 w-full">
-                                <form>
-                                    <div>
-                                        <label className="text-sm font-bold mb-2">Email</label>
-                                        <div className="border-2 p-1 rounded-md">
-                                            <input type="text"   className="w-full outline-none"/>
-                                        </div>
-                                    </div>
+                                    <LoginForm />
 
-                                    <div className="mt-4 w-full">
-                                        <label className="text-sm font-bold mb-2">Password</label>
-                                        <div className="border-2 p-1 rounded-md">
-                                            <input type="password"   className="w-full outline-none"/>
-                                        </div>
-                                        <p className="w-full ml-auto text_color text-sm mt-2">Forget password?</p>
-                                    </div>
-
-                                    <div className="mt-12">
-                                        <button className="text-center w-full p-2 text-white bg_color rounded-md ">Login</button>
-                                    </div>
                                     <p className="text-center mt-4">Don't have an account? <span className="text_color">Sign Up</span></p>
                                     <div className="flex items-center justify-between w-full mt-3">
                                         <div className="border-b-2 w-full"></div>
@@ -59,7 +46,7 @@ const Login = () => {
                                                 <img src={Google} alt="Google" />
                                             </div>
                                     </div>
-                                </form>
+                                
                             </div>
                         </div>
                     </div>
