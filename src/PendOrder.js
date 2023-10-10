@@ -20,7 +20,7 @@ const PendOrder = () => {
         <section>
                 <div className="flex cont ">
                 <SideBar />
-                    <section className="w-full">
+                    <section className="w-full mainPage">
                     <Navbar />
                     <div className="mx-6 my-4 ">
                         <h3 className="text-2xl mt-2">Overview</h3>

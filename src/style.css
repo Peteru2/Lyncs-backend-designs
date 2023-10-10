@@ -10,6 +10,10 @@ body{
 .sideBar{
     height: 100%;
     /* display: none; */
+    position: fixed;
+}
+.mainPage{
+  margin-left: 288px;
 }
 .bg_color{
     background-color: #F18701;
@@ -64,7 +68,7 @@ body{
     display: flex;
     width: 50%;
     height: 100%;
-    background-color: #F18701;
+    background-color: rgb(241, 135, 1);
   }
   .LoginPage2{
     display: flex;
@@ -104,5 +108,8 @@ body{
 
     
   }
-
+.Histo{
+  width: 600px;
+  height: 00px;
+}
   

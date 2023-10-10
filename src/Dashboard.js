@@ -6,9 +6,90 @@ import Vector1 from "./images/Vector1.svg"
 import smallVect from "./images/diagram.svg"
 import Funnel from "./images/FunnelSimple.svg"
 import Loader from "./Loader";
+// import faker from 'faker';
 import { useState, useEffect} from 'react'
 
+import {
+    Chart as ChartJS,
+    CategoryScale,
+    LinearScale,
+    BarElement,
+    Title,
+    Tooltip,
+    Legend,
+    ArcElement
+  } from 'chart.js';
+
+  import { Bar, Doughnut } from 'react-chartjs-2';
+// import { faker } from '@faker-js/faker'; 
+  
+
+  ChartJS.register(
+    CategoryScale,
+    LinearScale,
+    BarElement,
+    ArcElement,
+    Title,
+    Tooltip,
+    Legend
+  );
+  
+  
+ 
+  
+
 const Dashboard = () => {
+    const data = {
+        labels: ["Mon", "Tue", "Wed", "Thur", "Fri", "Sat", "Sun"],
+        datasets: [
+          {
+            label: "",
+            data: [10, 20, 15, 25, 50, 67, 89],
+            backgroundColor: "rgb(241, 135, 1)",
+            barThickness: 30
+          },
+         
+        ],
+      };
+      
+      const options = {
+        responsive: true,
+        plugins: {
+          legend: {
+            position: "top",
+          },
+          title: {
+            display: true,
+          },
+        },
+        scales: {
+          x: {
+            display: true,
+            title: {
+              display: true,
+              text: "X-Axis Label",
+            },
+          },
+          y: {
+            display: true,
+            title: {
+              display: true,
+              text: "Y-Axis Label",
+            },
+            ticks: {
+              stepSize: 5,
+              min: 0,
+              max: 50,
+            },
+          },
+        },
+        elements: {
+          bar: {
+            barPercentage: 0.1, // Adjust the width of each bar (0.6 means 60% of the available space)
+            categoryPercentage: 0.2, // Adjust the space between bars (0.8 means 80% of the available space)
+          },
+        },
+      };
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
@@ -48,7 +129,7 @@ const Dashboard = () => {
             <section>
                 <div className="flex cont ">
                 <SideBar />
-                <section className="w-full">
+                <section className="w-full mainPage">
                 <Navbar />
             {isLoading ? (<Loader />) :  (
                     <div className="mx-6 my-4">
@@ -100,8 +181,23 @@ const Dashboard = () => {
                   
                     </div>
                     
+
+                    <div className="flex bg-white">     
+                                    <div className="Histo">                         
+                                    <Bar className="bg-white" options={options} data={data} />
+                                    
+                                    </div>
+                                    <div className="Histo">
+                                    <Doughnut className="bg-white" options={options} data={data} />
+
+                                    </div>
+                </div>
                     </div>
+
+                    
             )}
+            
+ 
                     </section>
             </div>
             
