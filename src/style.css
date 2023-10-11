@@ -11,9 +11,10 @@ body{
     height: 100%;
     /* display: none; */
     position: fixed;
+    width: 16%
 }
 .mainPage{
-  margin-left: 288px;
+  margin-left: 240px;
 }
 .bg_color{
     background-color: #F18701;

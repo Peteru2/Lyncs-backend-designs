@@ -57,7 +57,7 @@ const SideBar = () => {
     const location = useLocation()
     return ( 
         <>
-            <aside className="bg-white sideBar border-r-2 w-72">
+            <aside className="bg-white sideBar border-r-2 ">
                     <div className="p-4  border-b-2 flex h-16 justify-center">
                         <img src={loggo} alt="logo" />
                     </div>
