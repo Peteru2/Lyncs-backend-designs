@@ -26,7 +26,8 @@ const PendOrder = () => {
                         <h3 className="text-2xl mt-2">Overview</h3>
                         <h2 className="my-3">Pending Orders</h2>
                         <div className="bg-white pendingOrder ">
-                        <div className="grid grid-cols-8 text-white bg_color h-10 px-2 text-sm rounded-t-md items-center">
+                        <div className="pendingList">                       
+                             <div className="grid grid-cols-8 text-white gap-4 bg_color h-10 px-2 text-sm rounded-t-md items-center">
                         <p>S/N</p>
                         <p>Source</p>
                         <p>Order Id</p>
@@ -39,7 +40,7 @@ const PendOrder = () => {
 
                         {pendOrderList.map((item, index) => {
                         return (
-                            <div key={index} className="grid grid-cols-8   border-b-2 h-14 px-2 text-sm items-center">
+                            <div key={index} className="grid grid-cols-8  gap-4 border-b-2 h-14 px-2 text-sm items-center">
                             <p>{item.sn}</p>
                             <p>{item.Source}</p>
                             <p>{item.OrderId}</p>
@@ -53,6 +54,7 @@ const PendOrder = () => {
                         })}
                         </div>
                     </div>            
+                    </div>
 
                     </section>
                 </div>

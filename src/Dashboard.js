@@ -6,7 +6,7 @@ import Vector1 from "./images/Vector1.svg"
 import smallVect from "./images/diagram.svg"
 import Funnel from "./images/FunnelSimple.svg"
 import Loader from "./Loader";
-// import faker from 'faker';
+import Pied from "./Pie";
 import { useState, useEffect} from 'react'
 
 import {
@@ -20,9 +20,7 @@ import {
     ArcElement
   } from 'chart.js';
 
-  import { Bar, Doughnut } from 'react-chartjs-2';
-// import { faker } from '@faker-js/faker'; 
-  
+  import { Bar } from 'react-chartjs-2';
 
   ChartJS.register(
     CategoryScale,
@@ -35,18 +33,19 @@ import {
   );
   
   
- 
-  
-
 const Dashboard = () => {
+
     const data = {
+      responsive: true,
         labels: ["Mon", "Tue", "Wed", "Thur", "Fri", "Sat", "Sun"],
         datasets: [
           {
             label: "",
             data: [10, 20, 15, 25, 50, 67, 89],
             backgroundColor: "rgb(241, 135, 1)",
-            barThickness: 30
+            barThickness: 30,
+            pointBorderWidth: 4,
+            pointBorderColor: "transparent"
           },
          
         ],
@@ -56,6 +55,7 @@ const Dashboard = () => {
         responsive: true,
         plugins: {
           legend: {
+            display: false,
             position: "top",
           },
           title: {
@@ -69,6 +69,9 @@ const Dashboard = () => {
               display: true,
               text: "X-Axis Label",
             },
+            grid: {
+              display: false
+            }
           },
           y: {
             display: true,
@@ -76,10 +79,17 @@ const Dashboard = () => {
               display: true,
               text: "Y-Axis Label",
             },
+            min: 0,
+            max: 50,
             ticks: {
-              stepSize: 5,
-              min: 0,
-              max: 50,
+              stepSize: 10,
+              callback: (value) => value + 'k'
+            },
+            border:{dash: [4, 4]},
+            grid: {
+              // display: false,
+                      borderDash: 3,
+                      drawBorder: false
             },
           },
         },
@@ -96,12 +106,12 @@ const Dashboard = () => {
       // Simulate loading for 3 seconds (adjust as needed)
       const loadingTimeout = setTimeout(() => {
         setIsLoading(false);
-      }, 4000);
+      }, );
   
       // Clear the timeout if the component unmounts
       return () => clearTimeout(loadingTimeout);
-    }, []);
-    const overview = [
+        }, []);
+        const overview = [
         {
             title: "Pending Orders",
             topImg: Frame1,
@@ -177,30 +187,21 @@ const Dashboard = () => {
 
                             )
                         })}
-                       
-                  
                     </div>
-                    
-
-                    <div className="flex bg-white">     
-                                    <div className="Histo">                         
-                                    <Bar className="bg-white" options={options} data={data} />
-                                    
+                    <div className="flex flex-wrap justify-center" >     
+                                    <div className="Histo bg-white my-20">  
+                                    <div className="flex w-full items-center pb-10">
+                                        <p className="ml-4 font-bold text-2xl">Visitor Analysis</p>
+                                        <p className="ml-auto py-2 px-1 border-2 rounded-md flex w-20 items-center justify-between font-bold"><span >Daily</span><i className="fa fa-chevron-down"></i></p>
+                                      </div>                       
+                                    <Bar  options={options} data={data} />          
                                     </div>
-                                    <div className="Histo">
-                                    <Doughnut className="bg-white" options={options} data={data} />
-
-                                    </div>
-                </div>
+                                    <Pied />                     
+                     </div>
                     </div>
-
-                    
             )}
-            
- 
                     </section>
             </div>
-            
             </section>
         </>
      );
