@@ -35,6 +35,7 @@ const Pied = () => {
           
           const options = {
             responsive: true,
+            maintainAspectRatio: false,
             plugins: {
               legend: {
                 display:false,
@@ -46,7 +47,7 @@ const Pied = () => {
             },
             scales: {
               x: {
-                display: true,
+                display: false,
                 title: {
                   display: true,
                   text: "X-Axis Label",
@@ -55,8 +56,9 @@ const Pied = () => {
                   display: false
                 },
               },
+              xAxes: [{ barPercentage: 0.5 }],
               y: {
-                display: true,
+                display: false,
                 title: {
                   display: true,
                   text: "Y-Axis Label",
@@ -81,16 +83,36 @@ const Pied = () => {
     return ( 
         <>
                 <section>                
-                                    <div className="Pie bg-white flex items-center">
+               
 
-                                    <Doughnut style={{width: "300px", height: "300px"}} options={options} data={data} />
+                                    <div className="Pie bg-white">
+                                      <h4 className="font-bold text-2xl">Analysis Chart</h4>
+                                      <div className="flex px-6 py-4 justify-between items-center">                                  
+                                         <div>                                   
+                                       <Doughnut  height="200px" width="200px" marginLeft= "200px" options={options} data={data} />
+                                    </div>
+
                                     <div >
+                                     <div className='flex items-center'>
+                                          <div className='w-4 h-4 pieYellowChart m-2'></div>
+                                          <p className='mx-2'>Pending Deliveries</p>
+                                     </div>
                                      <div className='flex'>
-                                          <div className='w-4 h-4 bg-red-400 mx-2'></div>
+                                          <div className='w-4 h-4 pieRedChart m-2'></div>
+                                          <p className='mx-2'>Pending Deliveries</p>
+                                     </div>
+                                     <div className='flex'>
+                                          <div className='w-4 h-4 pieGreenChart m-2'></div>
+                                          <p className='mx-2'>Pending Deliveries</p>
+                                     </div>
+                                     <div className='flex'>
+                                          <div className='w-4 h-4 pieBlueChart m-2'></div>
                                           <p className='mx-2'>Pending Deliveries</p>
                                      </div>
                                     </div>
                                     </div>
+                                    </div>
+ 
                 </section>
         </>
      );
