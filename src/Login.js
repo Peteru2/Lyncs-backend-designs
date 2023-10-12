@@ -11,7 +11,7 @@ const Login = () => {
             <section>
                 <div className=" loginpage ">
                     
-                    <div className="LoginPage1 pt-60 justify-center">
+                    <div className="LoginPage1 pt-52 justify-center">
                         <div>
                             <img src={LoginImg} alt="loginImg" />
                         </div>
