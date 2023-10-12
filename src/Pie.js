@@ -87,9 +87,9 @@ const Pied = () => {
 
                                     <div className="Pie bg-white">
                                       <h4 className="font-bold text-2xl">Analysis Chart</h4>
-                                      <div className="flex px-6 py-4 justify-between items-center">                                  
+                                      <div className="flex px-6  justify-between items-center">                                  
                                          <div>                                   
-                                       <Doughnut  height="200px" width="200px" marginLeft= "200px" options={options} data={data} />
+                                       <Doughnut  height="300px" width="300px" marginLeft= "200px" options={options} data={data} />
                                     </div>
 
                                     <div >

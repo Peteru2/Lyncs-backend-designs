@@ -1,5 +1,6 @@
 import SideBar from "./SideBar";
 import Navbar from "./Navbar";
+import AirPod from "./images/airpod.png"
 
 const PendOrder = () => {
     const pendOrderList = [
@@ -55,11 +56,38 @@ const PendOrder = () => {
                         </div>
                     </div>            
                     </div>
-
+                        <div>
+                            <div className="modal">
+                                <div className="flex w-full">
+                                    <h3>Pending Details</h3>
+                                    <p className="ml-auto"><i>i</i></p>
+                                </div>
+                                <h2 className="text-sm text-gray-400">See product information</h2>
+                                <div className="grid grid-cols-2 gap-10 mt-4 ">
+                                    <div className="flex-container">
+                                        <img src={AirPod} alt="airpod" />
+                                    </div>
+                                    <div className="flex-container">
+                                        <h5 className="text-sm text-gray-400">Product Name</h5>
+                                        <h5 className=" text-black font-bold mt-2">Apple Airpod 2</h5>
+                                        <h5 className="text-sm text-gray-400 mt-4">Price</h5>
+                                        <h5 className=" text-black font-bold mt-2">N140,000.00</h5>
+                                        <h5 className="text-sm text-gray-400 mt-4">Description</h5>
+                                        <p className="text-sm">
+                                            The Apple AirPods 2nd Generation redefine the way you experience audio, setting new standards for wireless earbuds. With their iconic design, seamless connectivity, and unmatched sound quality, these earbuds are a true testament to Apple's commitment to innovation and user-centric technology.<br/>Key Features:
+                                        </p>
+                                    </div>
+                                </div>
+                                <div className="mt-8">
+                                    <button className="bg_color w-full text-center text-white p-2 rounded-md">Push</button>
+                                </div>
+                            </div>
+                            <div className="overlay"></div>
+                        </div>
                     </section>
                 </div>
 
-
+                        
                 </section>
         </>
      );
