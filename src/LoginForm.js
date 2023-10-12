@@ -6,17 +6,27 @@ const LoginForm = () => {
     const [password, setPassword] = useState('');
     const [loggedIn, setLoggedIn] = useState(false);
     const [Error, setError] = useState('')
+    const [success, setSuccess] = useState('')
+    console.log(success);
+
     const navigate = useNavigate()
 
     console.log(loggedIn);
 
     const handleSubmit = async (e) => {
       e.preventDefault();
+      console.log(password);
+      console.log(email);
+      // console.log("This is not working")
   
       // Perform API call here and check login
-      if(email === ""){
-        setError("Email cannot be Empty")
-      }
+      const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+                if (!email.trim()) {
+                  setError("Email is required");
+                } else if (!emailRegex.test(email)) {
+                  setError("Invalide Email Format")
+                }
+     
       else if(password === ""){
         setError("Password cannot be empty cannot be Empty")
 
@@ -36,6 +46,7 @@ const LoginForm = () => {
           if (data.exists) {
             navigate('/');
             setLoggedIn(true);
+            setSuccess('It worked.');
           } else {
             setError('Name or password is incorrect.');
           }
@@ -59,20 +70,20 @@ const LoginForm = () => {
                                             <input type="text"  
                                             value={email}
                                             onChange={(e) => setEmail(e.target.value)}
-                                             className="w-full outline-none"/>
+                                             className="w-full outline-none px-2 text-sm"/>
                                         </div>
                                     </div>
 
                                     <div className="mt-4 w-full">
                                         <label className="text-sm font-bold mb-2">Password</label>
-                                        <div className="border-2 p-1 rounded-md">
+                                        <div className="border-2 py-1  rounded-md">
                                             <input type="password"   
                                             value={password}
                                             onChange={(e) => setPassword(e.target.value)}
-                                            className="w-full outline-none"/>
+                                            className="w-full outline-none px-2 text-sm"/>
                                         </div>
                                         <div className="w-full flex justify-right">
-                                                <p className="ml-auto text_color text-sm mt-2">Forget password?</p>
+                                                <p className="ml-auto text_color text-xs mt-2 ">Forget password?</p>
                                         </div>
 
                                     </div>

@@ -84,6 +84,9 @@ body{
     height: 100%;
     background-color: white;
   }
+  .LoginPage2>div {
+    width: 70%
+    }
   .parentLoginStyle{
     position: relative;
     display: flex;
@@ -188,4 +191,46 @@ body{
   height: 10px;
   width: 50%
 }
+.marchant{
+  width: 100%;
+  display: inline-flex;
+  flex-direction: row;
+  /* gap: 12px; */
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.lyncsImage{
+  width: 100%;
+}
+.lyncsImage img{
+  border-radius: 8px;
+  width: 90%;
+  height: 250px;
+  border-color: 1px #909090 solid;
+}
+.KongaImage{
+  width: 90%;
+  margin-left: auto;
+}
+.KongaImage .img{
+  border:1px #909090 solid;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border:1px #909090 solid;
+  border-radius: 8px;
+  height: 250px;
+}
+.moveIn{
+  opacity: 0;
+  transform:  translateX(100%);
+  transition: opacity 200ms ease, transform 200ms ease;
+  overflow-x: hidden;
+}
+
+.moveIn.moveInShow {
+    opacity: 1;
+    transform: translateX(100%);     
+  }
   

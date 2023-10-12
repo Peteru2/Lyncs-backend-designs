@@ -43,10 +43,7 @@ const Dashboard = () => {
             title: "Pending Deliveries",
             topImg: Frame1,
         },
-        {
-            title: "Pushed Items",
-            topImg: Frame1,
-        }
+        
     ]
     
     return ( 
@@ -59,7 +56,7 @@ const Dashboard = () => {
             {isLoading ? (<Loader />) :  (
                     <div className="mx-6 my-4">
                         <div className="flex w-full">
-                        <h4 className="text-2xl my-2 font-bold">Overview</h4>
+                        <h4 className="text-2xl mt-7 font-bold">Overview</h4>
                         <div className="ml-auto">
                             <img src={Funnel} alt="funnel"/>
                         </div>
@@ -69,13 +66,13 @@ const Dashboard = () => {
                         {overview.map((item,index)=>{
                             return(
 
-                                <div className=" mr-2 my-2 bg-white p-6 w-72 flex-wrap rounded-md">                               
+                                <div className=" mr-2 my-2 bg-white p-6 w-64 flex-wrap rounded-md">                               
                              <div className="flex ">
                                   <div className="">
                                     <div>
                                         <img src={item.topImg} alt="" />
                                     </div>
-                                    <h2 className="text-gray-600">
+                                    <h2 className="text-gray-600 text-sm mt-2">
                                         {item.title}
                                     </h2>
                                     <h4 className="text-black text-2xl mt-2 font-bold">
@@ -92,9 +89,9 @@ const Dashboard = () => {
                                     <div className="mt-1 mr-2">
                                         <img src= {smallVect} alt="" />
                                     </div>
-                                    <p className="text-gray-400"><span className="text-green-400 mr-2">3.70%</span> Last month</p>
+                                    <p className="text-gray-400 text-xs"><span className="text-green-400 mr-1">3.70%</span> Last month</p>
                                     </div>
-                                    <div className="ml-auto bg_color rounded-md py-2 px-4 text-white">
+                                    <div className="ml-auto bg_color rounded-md py-2 px-3 text-sm text-white">
                                         <p>View</p>
                                     </div>
                                 </div>

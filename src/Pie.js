@@ -95,19 +95,19 @@ const Pied = () => {
                                     <div >
                                      <div className='flex items-center'>
                                           <div className='w-4 h-4 pieYellowChart m-2'></div>
-                                          <p className='mx-2 text-sm'>Pending Deliveries</p>
+                                          <p className='mx-2 text-xs flex'>{data.labels[0]}</p>
                                      </div>
                                      <div className='flex items-center'>
                                           <div className='w-4 h-4 pieRedChart m-2'></div>
-                                          <p className='mx-2 text-sm'>Pending Deliveries</p>
+                                          <p className='mx-2 text-xs'>{data.labels[1]}</p>
                                      </div>
                                      <div className='flex items-center'>
                                           <div className='w-4 h-4 pieGreenChart m-2'></div>
-                                          <p className='mx-2 text-sm'>Pending Deliveries</p>
+                                          <p className='mx-2 text-xs'>{data.labels[2]}</p>
                                      </div>
                                      <div className='flex items-center'>
                                           <div className='w-4 h-4 pieBlueChart m-2'></div>
-                                          <p className='mx-2 text-sm '>Pending Deliveries</p>
+                                          <p className='mx-2 text-xs '>{data.labels[3]}</p>
                                      </div>
                                     </div>
                                     </div>

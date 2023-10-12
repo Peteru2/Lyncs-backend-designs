@@ -77,8 +77,8 @@ const SideBar = () => {
             </div>
             <div className="text-center text-gray-500 logout border-t-2 py-6">
                    
-             <button >
-               <i className="fa fa-logout"></i> Logout
+             <button className="text-sm">
+               <i className="fa fa-sign-out mr-1"></i> <span>Logout</span>
              </button>
             </div>
             </aside>
