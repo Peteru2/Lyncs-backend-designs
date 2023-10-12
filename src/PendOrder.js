@@ -100,7 +100,7 @@ const PendOrder = () => {
                             <div className={`modal ${preview ? "modal-show":""}`}>                            
                                 {selectedItemIndex !== null && (
                                     <div  key={selectedItemIndex} >
-                                    <div  className={push ? "hidden" :"block"}>
+                                    <div  className={push ? "hidden" : "hidden"}>
                                     <div className="flex w-full">
                                         <h3>Pending Details</h3>
                                         <div className="ml-auto cursor-pointer" onClick={handlePreviewClose}><img src={closeButton} alt="closebutton" /></div>
@@ -125,8 +125,11 @@ const PendOrder = () => {
                                         <button className="bg_color w-full text-center text-white p-2 rounded-md outline-none" onClick={handlePush}>Push</button>
                                     </div>
                                     </div>
-                                        <div className={push? "block" :"hidden"}>
-                                            This ia another section
+                                        <div className={push? "block" :"block"}>
+                                        <div className="flex w-full">
+                                        <h3>Pending Details</h3>
+                                        <div className="ml-auto cursor-pointer" onClick={handlePreviewClose}><img src={closeButton} alt="closebutton" /></div>
+                                    </div>
                                         </div>
                                     </div>
                                      )}
