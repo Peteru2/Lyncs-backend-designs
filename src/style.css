@@ -117,7 +117,7 @@ body{
     
   }
 .Histo{
-  width: 565px;
+  width: 500px;
   height: 350px;
   margin: 20px 20px;
   padding: 15px;
@@ -125,7 +125,7 @@ body{
 
 }
 .Pie{
-  width: 565px;
+  width: 500px;
   height: 350px;
   margin:20px 20px;
   padding: 15px;
@@ -162,7 +162,7 @@ body{
   top: 50%;
   left: 50%;
   width: 700px;
-  transform: translate(-50%,-50%) scale(1)  ;
+  transform: translate(-50%,-50%) scale(0)  ;
   transition: 200ms ease-in-out;
   background-color: #fff;
   padding: 20px;
@@ -170,10 +170,22 @@ body{
   z-index: 999;
   border-radius: 20px;
 }
+.modal-show {
+  transform: translate(-50%, -50%) scale(1);
+}
 .flex-container {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
+  width: 50%
+  /* display: none */
+}
+.prodImg{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 10px;
+  width: 50%
 }
   

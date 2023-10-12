@@ -87,7 +87,7 @@ const Pied = () => {
 
                                     <div className="Pie bg-white">
                                       <h4 className="font-bold text-2xl">Analysis Chart</h4>
-                                      <div className="flex px-6  justify-between items-center">                                  
+                                      <div className="flex  justify-between items-center">                                  
                                          <div>                                   
                                        <Doughnut  height="300px" width="300px" marginLeft= "200px" options={options} data={data} />
                                     </div>
@@ -95,19 +95,19 @@ const Pied = () => {
                                     <div >
                                      <div className='flex items-center'>
                                           <div className='w-4 h-4 pieYellowChart m-2'></div>
-                                          <p className='mx-2'>Pending Deliveries</p>
+                                          <p className='mx-2 text-sm'>Pending Deliveries</p>
                                      </div>
-                                     <div className='flex'>
+                                     <div className='flex items-center'>
                                           <div className='w-4 h-4 pieRedChart m-2'></div>
-                                          <p className='mx-2'>Pending Deliveries</p>
+                                          <p className='mx-2 text-sm'>Pending Deliveries</p>
                                      </div>
-                                     <div className='flex'>
+                                     <div className='flex items-center'>
                                           <div className='w-4 h-4 pieGreenChart m-2'></div>
-                                          <p className='mx-2'>Pending Deliveries</p>
+                                          <p className='mx-2 text-sm'>Pending Deliveries</p>
                                      </div>
-                                     <div className='flex'>
+                                     <div className='flex items-center'>
                                           <div className='w-4 h-4 pieBlueChart m-2'></div>
-                                          <p className='mx-2'>Pending Deliveries</p>
+                                          <p className='mx-2 text-sm '>Pending Deliveries</p>
                                      </div>
                                     </div>
                                     </div>

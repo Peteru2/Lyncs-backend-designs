@@ -15,7 +15,7 @@ const Navbar = () => {
                             <i className="fa fa-bell font-bold text-black"></i>
                         </div>
                         <div className="">
-                        <img src={ProImg} alt="profileImage" className="fa fa-bell text-black mr-4 w-10 h-10  rounded-full"/>
+                        <img src={ProImg} alt="profileImage" className="fa fa-bell text-black mr-4 w-8 h-8  rounded-full"/>
                         </div>
                         <p className="mr-2">Nebuchi Nwadiogbu</p>
                 </div>
