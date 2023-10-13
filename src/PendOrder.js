@@ -44,6 +44,8 @@ const PendOrder = () => {
     const [push, setPush] = useState(false)
     const [selectedItemIndex, setSelectedItemIndex] = useState(null);
     const [selectedDivIndex, setSelectedDivIndex] = useState(null);
+    // const [cont, setCont] = useState("Push");
+
     const [otherMarch, setOtherMarch] = useState(false)
 
 
@@ -70,6 +72,9 @@ const PendOrder = () => {
     const handlePush = () =>{
                 setPush(true)
     }
+    // handleCont = () =>{
+    //     setCont('Continue')
+    // }
 
     return ( 
         <>
@@ -174,7 +179,11 @@ const PendOrder = () => {
                                     </div>
                                     <div className="mt-12">
                                                 <button className="bg_color text-white p-2 rounded-md w-full">
-                                                        Continue
+                                                    {
+                                                        `Push ${selectedDivIndex === 1? "continue" :"Push"} `
+                                                    }
+                                                       
+
                                                 </button>
                                             </div>
                                         </div>

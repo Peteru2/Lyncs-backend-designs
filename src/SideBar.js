@@ -21,7 +21,7 @@ const SideBar = () => {
         },
         {
             title: "Pending Orders",
-            url: "/pending",
+            url: "/Pending",
             icon1: PendOIcon1,
             icon2: PendOIcon2
 
@@ -29,7 +29,7 @@ const SideBar = () => {
         },
         {
             title: "Pending Deliveries",
-            url: "",
+            url: "/Pend-Deliveries",
             icon1: PendDIcon1,
             icon2: PendDIcon2
 
