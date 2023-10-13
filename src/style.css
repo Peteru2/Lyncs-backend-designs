@@ -213,15 +213,16 @@ body{
   margin-left: auto;
 }
 .KongaImage .img{
-  border:1px #909090 solid;
+  /* border:1px #909090 solid; */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border:1px #909090 solid;
-  border-radius: 8px;
+  /* border:1px #909090 solid; */
+  border-radius: 8px; 
   height: 250px;
 }
+
 .moveIn{
   opacity: 0;
   transform: scale(0);
