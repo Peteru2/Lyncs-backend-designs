@@ -28,7 +28,7 @@ const Histo = () => {
           datasets: [
             {
               label: "",
-              data: [10, 20, 15, 25, 50, 67, 89],
+              data: [10, 20, 30, 25, 50, 67, 89],
               backgroundColor: "rgb(241, 135, 1)",
               barThickness: 30,
               pointBorderWidth: 4,

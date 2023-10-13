@@ -224,13 +224,16 @@ body{
 }
 .moveIn{
   opacity: 0;
-  transform:  translateX(100%);
+  transform: scale(0);
   transition: opacity 200ms ease, transform 200ms ease;
-  overflow-x: hidden;
+  overflow-x:hidden;
 }
 
-.moveIn.moveInShow {
+.moveIn.moveInLeft {
+    transform: translateX(100%); 
+  }  
+.moveInShow {
     opacity: 1;
-    transform: translateX(100%);     
+    transform: scale(1);     
   }
   

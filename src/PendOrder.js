@@ -41,7 +41,9 @@ const PendOrder = () => {
         }
     ]
     const [preview, setPreview] = useState(false)
+   
     const [push, setPush] = useState(false)
+
     const [div, setDiv] = useState(false)
 
     const [selectedItemIndex, setSelectedItemIndex] = useState(null);
@@ -50,14 +52,21 @@ const PendOrder = () => {
         
         setSelectedItemIndex(itemIndex);
         setPreview(true);
+        setPush(false)
+       
         // setPreview(prev => !prev)
     }
     const handlePreviewClose = () =>{
         setPreview(false);
+        setPush(false)
+        
+
+
     }
     const handlePush = () =>{
                 setPush(true)
     }
+    
     const handleDivClick = () =>{
                     setDiv(
                         (change) => !change
@@ -108,7 +117,7 @@ const PendOrder = () => {
                             <div className={`modal ${preview ? "modal-show":""}`}>                            
                                 {selectedItemIndex !== null && (
                                     <div  key={selectedItemIndex} >
-                                    <div  className={push ? "hidden" : "block"}>
+                                    <div  className={push?"hidden":"block"}>
                                     <div className="flex w-full">
                                         <h3>Pending Details</h3>
                                         <div className="ml-auto cursor-pointer" onClick={handlePreviewClose}><img src={closeButton} alt="closebutton" /></div>
@@ -132,9 +141,10 @@ const PendOrder = () => {
                                     <div className="mt-8">
                                         <button className="bg_color w-full text-center text-white p-2 rounded-md outline-none" onClick={handlePush}>Push</button>
                                     </div>
+
                                     </div>
 
-                                        <div className={push? "block" :"hidden"}>
+                                        <div className={push?"moveInShow":"moveIn"}>
                                         <div className="flex w-full">
                                         <h3>Select where to push products</h3>
                                         <div className="ml-auto cursor-pointer" onClick={handlePreviewClose}><img src={closeButton} alt="closebutton" /></div>
