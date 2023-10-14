@@ -1,7 +1,10 @@
 import SideBar from "./SideBar";
 import Navbar from "./Navbar";
 
+import { useSearch } from './SearchContext';
 const PendDeliveries = () => {
+  
+
     const pendDeliveriesList = [
         {
             sn: 1,
@@ -18,11 +21,15 @@ const PendDeliveries = () => {
             Marchants: "Adeyemi Oshuporu",
             DeliveryId: "#76883r",
             CreatedAt: "20/6/2023",
-            DeliveredProduct: "Samsung, Iphone, Nokia, Brush & Bar Soap",
+            DeliveredProduct: " Iphone, Nokia, Brush & Bar Soap",
             ProductAvailableOn:"Jumia"
 
         }
     ]
+      const { searchQuery } = useSearch();
+  const filteredPendDeliveriesList = pendDeliveriesList.filter((item) =>
+    item.DeliveredProduct.toLowerCase().includes(searchQuery.toLowerCase())
+  );
     return ( 
         <>
             <section>
@@ -45,7 +52,7 @@ const PendDeliveries = () => {
                         
                         </div>
 
-                        {pendDeliveriesList.map((item, index) => {
+                        {filteredPendDeliveriesList.map((item, index) => {
                         return (
                             
                             <div key={index}>

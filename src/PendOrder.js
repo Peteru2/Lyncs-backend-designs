@@ -44,6 +44,8 @@ const PendOrder = () => {
     const [push, setPush] = useState(false)
     const [selectedItemIndex, setSelectedItemIndex] = useState(null);
     const [selectedDivIndex, setSelectedDivIndex] = useState(null);
+    const [cont, setCont] = useState(false);
+
     // const [cont, setCont] = useState("Push");
 
     const [otherMarch, setOtherMarch] = useState(false)
@@ -65,12 +67,19 @@ const PendOrder = () => {
         setPush(false)
         setOtherMarch(false)
         setSelectedDivIndex(null)
+            setCont(false)
+
        
     
     }
 
     const handlePush = () =>{
                 setPush(true)
+                if(selectedDivIndex === null){
+                    alert("No Marchant Selected");}
+    }
+    const handleCont = () =>{
+            setCont(true)
     }
     // handleCont = () =>{
     //     setCont('Continue')
@@ -142,14 +151,12 @@ const PendOrder = () => {
                                             </p>
                                         </div>
                                     </div>
-                                    <div className="mt-8">
-                                        <button className="bg_color w-full text-center text-white p-2 rounded-md outline-none" onClick={handlePush}>Push</button>
-                                    </div>
+                                   
 
                                     </div>
 
-                                        <div className={push ? "block": selectedDivIndex === 1 ? "hidden":"hidden"}>
-                                            <div className={selectedDivIndex ===1? "hidden":"block"}>
+                                        <div className={push  && !cont ? "block": "hidden"}>
+                                            <div className="">
                                         <div className="flex w-full">
                                         <h3>Select where to push products</h3>
                                         <div className="ml-auto cursor-pointer" onClick={handlePreviewClose}><img src={closeButton} alt="closebutton" /></div>
@@ -177,26 +184,27 @@ const PendOrder = () => {
                                             </div>
                                            
                                     </div>
-                                    <div className="mt-12">
-                                                <button className="bg_color text-white p-2 rounded-md w-full">
-                                                    {
-                                                        `Push ${selectedDivIndex === 1? "continue" :"Push"} `
-                                                    }
-                                                       
-
-                                                </button>
-                                            </div>
+                                    
                                         </div>
                                         </div>
 
-                                        <div className={selectedDivIndex === 1 ?"block":"hidden"}>
+                                        <div className={cont? "block":"hidden"}>
                                             <div className="flex w-full">
                                         <h3>Select where to push products</h3>
                                         <div className="ml-auto cursor-pointer" onClick={handlePreviewClose}><img src={closeButton} alt="closebutton" /></div>
                                         </div>
                                         <h2 className="text-sm text-gray-400">You can select multiple market place</h2>
                                         </div>
+                                        <div className="mt-12">
+                                                <button onClick={handlePush} className={selectedDivIndex === null || selectedDivIndex === 0?"bg_color text-white p-2 rounded-md w-full":"hidden"}>
+                                                    Push
+                                                </button>
+                                                <button onClick={handleCont} className={selectedDivIndex === 1 ? "bg_color text-white p-2 rounded-md w-full" : "hidden"}>
+                                                        Continue
+                                                </button>
+                                            </div>
                                     </div>
+                                    
 
                                      )}
                                 </div>
