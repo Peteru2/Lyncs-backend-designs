@@ -6,6 +6,10 @@ import closeButton from "./images/forbidden-2.svg"
 import { useState } from "react";
 import clanMarchant from "./images/lyncsMarch.png"
 import kongaMarchant from "./images/konga.png"
+import Jiji from "./images/Jiji.png"
+import Ali from "./images/ali.png"
+import Success from "./images/success.png"
+import MarketImg from "./MarketImg";
 
 const PendOrder = () => {
     const pendOrderList = [
@@ -40,11 +44,31 @@ const PendOrder = () => {
 
         }
     ]
+    const options = [
+        {
+          id: 1,
+          name: 'Option 1',
+          imageUrl: kongaMarchant
+        },
+        {
+          id: 2,
+          name: 'Option 2',
+          imageUrl: Jiji
+        },
+        {
+          id: 3,
+          name: 'Option 3',
+          imageUrl: Ali
+        },
+        // Add more options as needed
+      ];
     const [preview, setPreview] = useState(false)
     const [push, setPush] = useState(false)
     const [selectedItemIndex, setSelectedItemIndex] = useState(null);
     const [selectedDivIndex, setSelectedDivIndex] = useState(null);
     const [cont, setCont] = useState(false);
+    const [lastPush, setLastPush] = useState(false);
+
 
     // const [cont, setCont] = useState("Push");
 
@@ -68,6 +92,8 @@ const PendOrder = () => {
         setOtherMarch(false)
         setSelectedDivIndex(null)
             setCont(false)
+            setLastPush(false)
+
 
        
     
@@ -75,11 +101,13 @@ const PendOrder = () => {
 
     const handlePush = () =>{
                 setPush(true)
-                if(selectedDivIndex === null){
-                    alert("No Marchant Selected");}
+                // if(selectedDivIndex === null){
+                //     alert("No Marchant Selected");}
     }
     const handleCont = () =>{
             setCont(true)
+            setLastPush(true)
+
     }
     // handleCont = () =>{
     //     setCont('Continue')
@@ -194,13 +222,31 @@ const PendOrder = () => {
                                         <div className="ml-auto cursor-pointer" onClick={handlePreviewClose}><img src={closeButton} alt="closebutton" /></div>
                                         </div>
                                         <h2 className="text-sm text-gray-400">You can select multiple market place</h2>
+
+                                         <MarketImg options={options} />
+                                        </div>
+                                        <div >
+                                        <div className="flex w-full hidden">
+                                        <h3>Successful!</h3>
+                                        <div className="ml-auto cursor-pointer" onClick={handlePreviewClose}><img src={closeButton} alt="closebutton" /></div>
+                                        </div>
+                                        <h2 className="text-sm text-gray-400">Your product has been pushed successfully to jumia and konga</h2>
+                                            <div className="mt-4">
+
+                                                        <img src={Success} alt="Success" />
+                                            </div>
                                         </div>
                                         <div className="mt-12">
                                                 <button onClick={handlePush} className={selectedDivIndex === null || selectedDivIndex === 0?"bg_color text-white p-2 rounded-md w-full":"hidden"}>
                                                     Push
                                                 </button>
                                                 <button onClick={handleCont} className={selectedDivIndex === 1 ? "bg_color text-white p-2 rounded-md w-full" : "hidden"}>
-                                                        Continue
+                                                        {
+                                                        lastPush ? (
+                                                            <h3>Push</h3>
+                                                        ):
+                                                        (<h3>Continue</h3>)
+                                                        }
                                                 </button>
                                             </div>
                                     </div>

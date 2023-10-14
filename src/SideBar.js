@@ -37,7 +37,7 @@ const SideBar = () => {
         },
         {
             title: "Awaiting Feedbacks",
-            url: "",
+            url: "/Awaiting-Feedback",
             icon1: AwaitIcon1,
             icon2: AwaitIcon2
 

@@ -21,7 +21,7 @@ const PendDeliveries = () => {
             Marchants: "Adeyemi Oshuporu",
             DeliveryId: "#76883r",
             CreatedAt: "20/6/2023",
-            DeliveredProduct: " Iphone, Nokia, Brush & Bar Soap",
+            DeliveredProduct: ", Iphone, Nokia, Brush & Bar Soap",
             ProductAvailableOn:"Jumia"
 
         }
