@@ -37,12 +37,16 @@ const LoginForm = () => {
                   });               
                 } else if (!emailRegex.test(email)) {
                   setError("Invalid Email Format")
+                  toast.error(error, {
+                    position: toast.POSITION.TOP_CENTER,
+                  }); 
                 }
      
       else if(password === ""){
         setError("Password cannot be empty cannot be Empty")
-
-  
+        toast.error(error, {
+          position: toast.POSITION.TOP_CENTER,
+        }); 
         
       }
       else{
@@ -58,19 +62,41 @@ const LoginForm = () => {
         if (response.ok) {
           const data = await response.json();
           if (data.exists) {
-            navigate('/');
-            setLoggedIn(true);
-            setSuccess('It worked.');
+            if (data.password){
+              navigate('/');
+              setLoggedIn(true);
+              setSuccess('It worked.');
+              toast.success(success, {
+                position: toast.POSITION.TOP_CENTER,
+              }); 
+              console.log("it has worked")
+            }
+            else{
+              setError('Invalid Credentials')
+              toast.error(error, {
+                    position: toast.POSITION.TOP_CENTER,
+                  }); 
+            }
+            
           } else {
-            setError('Name or password is incorrect.');
+            setError('Staff not found');
+            toast.error(error, {
+              position: toast.POSITION.TOP_CENTER,
+            }); 
           }
         } else {
           // Handle other API errors here
-          setError('An error occurred during login.');
+          setError('Error during login.');
+          toast.error(error, {
+            position: toast.POSITION.TOP_CENTER,
+          }); 
         }
       } catch (error) {
         console.error('API request failed:', error);
         setError('API request failed:', error)
+        toast.error(error, {
+          position: toast.POSITION.TOP_CENTER,
+        }); 
       }
     }
     // toast("Default Notification !");
