@@ -1,19 +1,28 @@
 import  { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 
 const LoginForm = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [loggedIn, setLoggedIn] = useState(false);
-    const [Error, setError] = useState('')
+    const [error, setError] = useState('')
     const [success, setSuccess] = useState('')
+   
     console.log(success);
 
     const navigate = useNavigate()
 
     console.log(loggedIn);
 
+    
+
+   
+
     const handleSubmit = async (e) => {
+
+
       e.preventDefault();
       console.log(password);
       console.log(email);
@@ -22,14 +31,19 @@ const LoginForm = () => {
       // Perform API call here and check login
       const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
                 if (!email.trim()) {
-                  setError("Email is required");
+                  setError("Email is required!!")
+                  toast.error(error, {
+                    position: toast.POSITION.TOP_CENTER,
+                  });               
                 } else if (!emailRegex.test(email)) {
-                  setError("Invalide Email Format")
+                  setError("Invalid Email Format")
                 }
      
       else if(password === ""){
         setError("Password cannot be empty cannot be Empty")
 
+  
+        
       }
       else{
          try {
@@ -59,6 +73,7 @@ const LoginForm = () => {
         setError('API request failed:', error)
       }
     }
+    // toast("Default Notification !");
     };
 
     return ( 
@@ -92,7 +107,8 @@ const LoginForm = () => {
                                     </div>
                 
                                     </form>
-                                    <h3>{Error}</h3>
+                                   
+                                    <ToastContainer />
         </>
      );
 }
