@@ -68,6 +68,8 @@ const PendOrder = () => {
     const [selectedItemIndex, setSelectedItemIndex] = useState(null);
     const [selectedDivIndex, setSelectedDivIndex] = useState(null);
     const [cont, setCont] = useState(false);
+    const [success, setSuccess] = useState(false);
+
     const [pushWord, setPushWord] = useState("");
 
     const [otherMarch, setOtherMarch] = useState(false)
@@ -94,6 +96,8 @@ const PendOrder = () => {
         setCont(false)
         setPushWord("Push")
         setIsSelectionValid(false)
+        setSuccess(false)
+
 
         // setLastPush(false)
 
@@ -113,6 +117,13 @@ const PendOrder = () => {
       const handleSelectionChange = (hasSelection) => {
         setIsSelectionValid(hasSelection);
       }
+
+      const handleAction = (itemIndex) =>{
+        setSelectedItemIndex(itemIndex);
+        setPreview(true);
+        setPush(true);
+        setCont(false)
+      }
       
       
     const handlePush = () =>{
@@ -126,14 +137,22 @@ const PendOrder = () => {
                         setCont(true)
                         
                     }
-                    else if(isSelectionValid === false){
+                     if(isSelectionValid === true){
+                        setSuccess(true)
+                        setCont(false)
+                        setPush(false)
+
+                    }
+                    if(success === true && push ===false){
+                        setPushWord("Done")
                         setPreview(false);
                         setPush(false)
                         setOtherMarch(false)
                         setSelectedDivIndex(null)
                         setCont(false)
-                        setPushWord("Push")
                         setIsSelectionValid(false)
+                        setSuccess(false)
+
                     }
                    
                 }
@@ -179,7 +198,7 @@ const PendOrder = () => {
                             <p>{item.NumberOfItem}</p>
                             <p>{item.OrderCateg}</p>
                             <p onClick={()=>handlePreview(index)} className="text_color cursor-pointer">{item.View}</p>
-                            <p className="p-2 px-3 bg_color rounded-md text-white w-20 text-center">{item.Action}</p>
+                            <p onClick={()=>handleAction(index)} className="p-2 px-3 bg_color cursor-pointer rounded-md text-white w-20 text-center">{item.Action}</p>
                             </div>
                             </div>
                             )})}
@@ -188,7 +207,7 @@ const PendOrder = () => {
                             <div className={`modal ${preview ? "modal-show":""}`}>                            
                                 {selectedItemIndex !== null && (
                                     <div  key={selectedItemIndex} >
-                                    <div  className={push || otherMarch ?"hidden":"block"}>
+                                    <div  className={push || otherMarch || success?"hidden":"block"}>
                                     <div className="flex w-full">
                                         <h3>Pending Details</h3>
                                         <div className="ml-auto cursor-pointer" onClick={handlePreviewClose}><img src={closeButton} alt="closebutton" /></div>
@@ -259,7 +278,7 @@ const PendOrder = () => {
                                          <MarketImg options={options} onSelectionChange={handleSelectionChange}/>
                                         </div>
                                     
-                                        <div className="hidden">
+                                        <div className={success?"block":"hidden"}>
                                         <div className="flex w-full">
                                         <h3>Successful!</h3>
                                         <div className="ml-auto cursor-pointer" onClick={handlePreviewClose}><img src={closeButton} alt="closebutton" /></div>
