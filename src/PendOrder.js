@@ -3,13 +3,14 @@ import Navbar from "./Navbar";
 
 import Pod from "./images/airpod.png"
 import closeButton from "./images/forbidden-2.svg"
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import clanMarchant from "./images/lyncsMarch.png"
 import kongaMarchant from "./images/konga.png"
 import Jiji from "./images/Jiji.png"
 import Ali from "./images/ali.png"
 import Success from "./images/success.png"
 import MarketImg from "./MarketImg";
+
 
 const PendOrder = () => {
     const pendOrderList = [
@@ -67,13 +68,12 @@ const PendOrder = () => {
     const [selectedItemIndex, setSelectedItemIndex] = useState(null);
     const [selectedDivIndex, setSelectedDivIndex] = useState(null);
     const [cont, setCont] = useState(false);
-    const [lastPush, setLastPush] = useState(false);
-
-
-    // const [cont, setCont] = useState("Push");
+    const [pushWord, setPushWord] = useState("");
 
     const [otherMarch, setOtherMarch] = useState(false)
+    const [isSelectionValid, setIsSelectionValid] = useState(false);
 
+  
 
   const handleDivClick = (index) => {
      setSelectedDivIndex(index); 
@@ -91,24 +91,54 @@ const PendOrder = () => {
         setPush(false)
         setOtherMarch(false)
         setSelectedDivIndex(null)
-            setCont(false)
-            setLastPush(false)
+        setCont(false)
+        setPushWord("Push")
+        setIsSelectionValid(false)
 
+        // setLastPush(false)
 
-       
-    
     }
-
+    useEffect(() => {
+        if (selectedDivIndex === 1) {
+          setPushWord("Continue");
+        } else {
+          setPushWord("Push");
+        }
+       
+      }, [selectedDivIndex]); 
+     
+      
+      
+      
+      const handleSelectionChange = (hasSelection) => {
+        setIsSelectionValid(hasSelection);
+      }
+      
+      
     const handlePush = () =>{
                 setPush(true)
-                // if(selectedDivIndex === null){
-                //     alert("No Marchant Selected");}
+                if(push === true){
+                    if (selectedDivIndex === null){
+                        alert("This is going to work")
+                    }
+                    else if(selectedDivIndex === 1){
+                        setPushWord("Push")
+                        setCont(true)
+                        
+                    }
+                    else if(isSelectionValid === false){
+                        setPreview(false);
+                        setPush(false)
+                        setOtherMarch(false)
+                        setSelectedDivIndex(null)
+                        setCont(false)
+                        setPushWord("Push")
+                        setIsSelectionValid(false)
+                    }
+                   
+                }
     }
-    const handleCont = () =>{
-            setCont(true)
-            setLastPush(true)
-
-    }
+   
     // handleCont = () =>{
     //     setCont('Continue')
     // }
@@ -201,6 +231,9 @@ const PendOrder = () => {
                                             <div className=  "KongaImage">
                                                 <h3>Other Market</h3>
                                                 <div className={ selectedDivIndex === 1 ? " border-2 border-yellow-300 img mt-3" :"img mt-3 border border-gray-300"} >
+                                                    {/* {
+                                                        selectedDivIndex === 1? setPushWord("Push"):setPushWord("Continue")
+                                                    } */}
                                                 <div className=" w-full flex justify-center ">
                                                     <img src={kongaMarchant} alt="KongaMarchant" onClick={ () =>handleDivClick(1)}  />
                                                 </div>
@@ -223,10 +256,11 @@ const PendOrder = () => {
                                         </div>
                                         <h2 className="text-sm text-gray-400">You can select multiple market place</h2>
 
-                                         <MarketImg options={options} />
+                                         <MarketImg options={options} onSelectionChange={handleSelectionChange}/>
                                         </div>
-                                        <div >
-                                        <div className="flex w-full hidden">
+                                    
+                                        <div className="hidden">
+                                        <div className="flex w-full">
                                         <h3>Successful!</h3>
                                         <div className="ml-auto cursor-pointer" onClick={handlePreviewClose}><img src={closeButton} alt="closebutton" /></div>
                                         </div>
@@ -236,19 +270,19 @@ const PendOrder = () => {
                                                         <img src={Success} alt="Success" />
                                             </div>
                                         </div>
+
                                         <div className="mt-12">
-                                                <button onClick={handlePush} className={selectedDivIndex === null || selectedDivIndex === 0?"bg_color text-white p-2 rounded-md w-full":"hidden"}>
-                                                    Push
-                                                </button>
-                                                <button onClick={handleCont} className={selectedDivIndex === 1 ? "bg_color text-white p-2 rounded-md w-full" : "hidden"}>
-                                                        {
-                                                        lastPush ? (
-                                                            <h3>Push</h3>
-                                                        ):
-                                                        (<h3>Continue</h3>)
-                                                        }
+                                                <button onClick={handlePush} className="bg_color text-white p-2 rounded-md w-full">
+                                                    {isSelectionValid ?
+                                                    (
+                                                        <h3>Push</h3>
+                                                    ):
+                                                    (
+                                                    <h2>{pushWord}</h2>
+                                                    )}
                                                 </button>
                                             </div>
+
                                     </div>
                                     
 

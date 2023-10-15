@@ -44,13 +44,13 @@ const AwaitingFeed = () => {
                                     <h2 className="my-3">Pending Deliveries</h2>
                                     <div className="w-full pendingOrder ">
                                         {/* <img src={AirPod} alt="air" /> */}
-                                    <table className="pendingList">                       
-                                        <th className="grid grid-cols-5 text-white gap-3 bg_color h-10 px-2 text-xs rounded-t-md items-center">
+                                    <table className="pendingList w-full">                       
+                                        <th className="grid grid-cols-5 text-left text-white gap-3 bg_color h-10 px-2 text-xs rounded-t-md items-center">
                                     <tr>S/N</tr>
                                     <tr>Delivery Id</tr>
                                     <tr>Price</tr>
                                     <tr>Number of Items</tr>
-                                    <tr>View</tr>
+                                    <tr >View</tr>
                         
                                         </th>
                                         {
@@ -62,7 +62,7 @@ const AwaitingFeed = () => {
                                                            <td>{item.deliveryId}</td>
                                                            <td>{item.price}</td>
                                                            <td>{item.numOfItems}</td>
-                                                           <td>{item.view}</td>
+                                                           <td className="text_color cursor-pointer">{item.view}</td>
 
                                                     </tbody>
                                                     </div>

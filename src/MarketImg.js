@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-const MarketImg = ({ options }) => {
+const MarketImg = ({ options, onSelectionChange }) => {
     const [selectedOptions, setSelectedOptions] = useState([]);
 
   const handleOptionClick = (option) => {
@@ -10,12 +10,14 @@ const MarketImg = ({ options }) => {
     } else {
       setSelectedOptions([...selectedOptions, option]);
     }
+    onSelectionChange(selectedOptions.length > 0);
   };
   console.log('Selected Options:', selectedOptions);
+  
     return ( 
         <>
             <section>
-            <div className={`grid grid-cols-${options.length} items-center `}>
+            <div className={`grid grid-cols-3 items-center `}>
                 {options.map((option) => (
                 <div
                     key={option.id}
