@@ -10,9 +10,11 @@ import Jiji from "./images/Jiji.png"
 import Ali from "./images/ali.png"
 import Success from "./images/success.png"
 import MarketImg from "./MarketImg";
+import axios from 'axios'
 
 
 const PendOrder = () => {
+   
     const pendOrderList = [
         {
             sn: 1,
@@ -124,7 +126,21 @@ const PendOrder = () => {
         setPush(true);
         setCont(false)
       }
-      
+      const [data, setData] = useState([]);
+
+      useEffect(() => {
+          // Make a GET request to the API
+          axios.get('https://api.lyncs.africa/staff/pending-orders')
+          .then((response) => {
+              // Handle the successful response
+              setData(response.data.data);
+              console.log(response.data.data)
+          })
+          .catch((error) => {
+              // Handle errors
+              console.error('Error fetching data:', error);
+          });
+      }, []);
       
     const handlePush = () =>{
                 setPush(true)
@@ -158,10 +174,7 @@ const PendOrder = () => {
                 }
     }
    
-    // handleCont = () =>{
-    //     setCont('Continue')
-    // }
-
+   
     return ( 
         <>
         <section>
@@ -186,12 +199,14 @@ const PendOrder = () => {
                         <p>Action</p>
                         </div>
 
-                        {pendOrderList.map((item, index) => {
-                        return (
-                            
+                        
+                        {Array.isArray(data) ?
+                             data.map((item,index) => {
+                         
+                            return (
                             <div key={index}>
                             <div  className="grid grid-cols-8  gap-3 border-b-2 h-14 px-2 text-xs items-center">
-                            <p>{item.sn}</p>
+                            <p>{item.company_id}</p>
                             <p>{item.Source}</p>
                             <p>{item.OrderId}</p>
                             <p>{item.CreatedAt}</p>
@@ -201,7 +216,8 @@ const PendOrder = () => {
                             <p onClick={()=>handleAction(index)} className="p-2 px-3 bg_color cursor-pointer rounded-md text-white w-20 text-center">{item.Action}</p>
                             </div>
                             </div>
-                            )})}
+                        )}): null}
+                        
 
 
                             <div className={`modal ${preview ? "modal-show":""}`}>                            

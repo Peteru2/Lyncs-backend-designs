@@ -3,12 +3,13 @@ import Dashboard from './Dashboard';
 import Login from './Login'; 
 import PendOrder from './PendOrder';
 import PendDeliveries from './PendDeliveries';
-import { Route, Routes,  } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import { SearchProvider } from './SearchContext'; 
 // import MyTableComponent from './PendTable';
 
 import "./style.css"
 import AwaitingFeed from './AwaitingFeed';
+// import { AuthProvider } from './AuthContext';
 
 function App() {
   // const navigate = useNavigate();
@@ -16,10 +17,13 @@ function App() {
     < >
 
 <SearchProvider>
-    <Routes>
-      
+   {/* <AuthProvider> */}
+   
+     
+       <Routes>
+        
         <Route path={'/Login'} element={<Login />} />
-        <Route path={'/'} element={<Dashboard />} />Awaiting-Feedback
+        <Route path={'/'} element={<Dashboard />} />
         <Route path={'/Pending'} element={<PendOrder />} />
 
         <Route path={'/Pend-Deliveries'} element={<PendDeliveries />} />
@@ -27,7 +31,11 @@ function App() {
 
 
         {/* <Route path="/" element={navigate("/login")} /> */}
-    </Routes>      
+        
+        </Routes>
+       
+   
+     {/* </AuthProvider>  */}
     </SearchProvider>
 
       </>

@@ -2,12 +2,14 @@ import  { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
+import axios from 'axios'
+import { useAuth } from './AuthContext';
 
 const LoginForm = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [loggedIn, setLoggedIn] = useState(false);
-    const [error, setError] = useState('')
+    const [error, setError] = useState('i')
     const [success, setSuccess] = useState('')
    
     console.log(success);
@@ -19,11 +21,12 @@ const LoginForm = () => {
     
 
    
+    const { login } = useAuth();
 
     const handleSubmit = async (e) => {
 
-
       e.preventDefault();
+      login();
       console.log(password);
       console.log(email);
       // console.log("This is not working")
@@ -50,55 +53,81 @@ const LoginForm = () => {
         
       }
       else{
-         try {
-        const response = await fetch('https://api.lyncs.africa/staff/login', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ email, password }),
-        });
-  
-        if (response.ok) {
-          const data = await response.json();
-          if (data.exists) {
-            if (data.password){
+      axios({
+        method: 'post',
+        url: 'https://api.lyncs.africa/staff/login',
+        data: {
+          email: email,
+          password: password
+        }
+      })
+      .then((response) =>{
+              console.log(response.data)
+              setTimeout(() => {
               navigate('/');
+                
+              }, 2000);
               setLoggedIn(true);
-              setSuccess('It worked.');
+              setSuccess(response.data.message);
               toast.success(success, {
                 position: toast.POSITION.TOP_CENTER,
               }); 
-              console.log("it has worked")
-            }
-            else{
-              setError('Invalid Credentials')
-              toast.error(error, {
-                    position: toast.POSITION.TOP_CENTER,
-                  }); 
-            }
-            
-          } else {
-            setError('Staff not found');
+      })
+      .catch((err)=>{
+        console.log(err)
+        setError(err);
             toast.error(error, {
               position: toast.POSITION.TOP_CENTER,
             }); 
-          }
-        } else {
-          // Handle other API errors here
-          setError('Error during login.');
-          toast.error(error, {
-            position: toast.POSITION.TOP_CENTER,
-          }); 
-        }
-      } catch (error) {
-        console.error('API request failed:', error);
-        setError('API request failed:', error)
-        toast.error(error, {
-          position: toast.POSITION.TOP_CENTER,
-        }); 
+      })
+
       }
-    }
+      // try {
+
+          
+    
+      //   const response = await fetch('https://api.lyncs.africa/staff/login', {
+      //     method: 'POST',
+      //     headers: {
+      //       'Content-Type': 'application/json',
+      //     },
+      //     body: JSON.stringify({ email, password }),
+      //   });
+      // console.log(response)
+       
+      //     const data = await response.json();
+      //     if (data.exists) {
+      //       if (data.password){
+      //         navigate('/');
+      //         setLoggedIn(true);
+      //         setSuccess('It worked.');
+      //         toast.success(success, {
+      //           position: toast.POSITION.TOP_CENTER,
+      //         }); 
+      //         console.log("it has worked")
+      //       }
+      //       else{ 
+      //         setError('Invalid Credentials')
+      //         toast.error(error, { 
+      //               position: toast.POSITION.TOP_CENTER, 
+      //             }); 
+      //       }
+            
+      //     } else {
+      //       setError('Staff not found');
+      //       toast.error(error, {
+      //         position: toast.POSITION.TOP_CENTER,
+      //       }); 
+      //     }
+       
+      // }
+      //  catch (error) {
+      //   console.error('API request failed:', error);
+      //   setError('API request failed:', error)
+      //   toast.error(error, {
+      //     position: toast.POSITION.TOP_CENTER,
+      //   }); 
+      // }
     // toast("Default Notification !");
     };
 
