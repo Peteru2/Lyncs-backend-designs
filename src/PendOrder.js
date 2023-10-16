@@ -135,6 +135,9 @@ const PendOrder = () => {
               // Handle the successful response
               setData(response.data.data);
               console.log(response.data.data)
+              const firstItem = response.data.data[0];
+              console.log(firstItem)
+              console.log(firstItem.company_id)
           })
           .catch((error) => {
               // Handle errors
@@ -200,23 +203,26 @@ const PendOrder = () => {
                         </div>
 
                         
-                        {Array.isArray(data) ?
-                             data.map((item,index) => {
+                        {
+                        // Array.isArray(data) ?
+                        Object.values(data).map((item,index) => {
                          
                             return (
                             <div key={index}>
                             <div  className="grid grid-cols-8  gap-3 border-b-2 h-14 px-2 text-xs items-center">
                             <p>{item.company_id}</p>
-                            <p>{item.Source}</p>
+                            <p>{item.Product}</p>
                             <p>{item.OrderId}</p>
                             <p>{item.CreatedAt}</p>
                             <p>{item.NumberOfItem}</p>
                             <p>{item.OrderCateg}</p>
-                            <p onClick={()=>handlePreview(index)} className="text_color cursor-pointer">{item.View}</p>
+                            <p onClick={()=>handlePreview(index)} className="text_color cursor-pointer">View</p>
                             <p onClick={()=>handleAction(index)} className="p-2 px-3 bg_color cursor-pointer rounded-md text-white w-20 text-center">{item.Action}</p>
                             </div>
                             </div>
-                        )}): null}
+                        )})
+                        // : (<>Jesus is Lord</>)
+                    }
                         
 
 
