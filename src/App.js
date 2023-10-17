@@ -11,6 +11,7 @@ import "./style.css"
 import AwaitingFeed from './AwaitingFeed';
 // import { Navigate } from 'react-router-dom';
 import { AuthProvider } from './AuthContext';
+import ClosedDelivery from './ClosedDelivery';
 
 function App() {
   // const navigate = useNavigate();
@@ -28,6 +29,8 @@ function App() {
 
         <Route path={'/Pend-Deliveries'} element={<PendDeliveries />} />
         <Route path={'/Awaiting-Feedback'} element={<AwaitingFeed />} />
+        <Route path={'/Closed-Deliveries'} element={<ClosedDelivery />} />
+
 
 
         {/* <Route path="/" element={navigate("/login")} /> */}

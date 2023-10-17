@@ -44,7 +44,7 @@ const SideBar = () => {
         },
         {
             title: "Closed Deliveries",
-            url: "",
+            url: "/Closed-Deliveries",
             icon1: ClosedIcon1,
             icon2: ClosedIcon2
 

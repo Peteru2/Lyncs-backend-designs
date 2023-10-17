@@ -77,8 +77,9 @@ const PendOrder = () => {
     const [otherMarch, setOtherMarch] = useState(false)
     const [isSelectionValid, setIsSelectionValid] = useState(false);
 
-  
+    
 
+    
   const handleDivClick = (index) => {
      setSelectedDivIndex(index); 
      
@@ -126,24 +127,46 @@ const PendOrder = () => {
         setPush(true);
         setCont(false)
       }
+      useEffect(() => {
+        // Make a GET request to the API
+        axios.get('https://api.lyncs.africa/staff/pending-orders')
+      
+        .then((response) => {
+
+            // Handle the successful response
+            setData(response.data.data);
+            console.log(response.data.data)
+           
+                    })
+        .catch((error) => {
+            // Handle errors
+            console.error('Error fetching data:', error);
+        });
+    }, []);
       const [data, setData] = useState([]);
 
-      useEffect(() => {
-          // Make a GET request to the API
-          axios.get('https://api.lyncs.africa/staff/pending-orders')
-        
-          .then((response) => {
+      const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 10; // Number of items to display per page
 
-              // Handle the successful response
-              setData(response.data.data);
-              console.log(response.data.data)
-             
-                      })
-          .catch((error) => {
-              // Handle errors
-              console.error('Error fetching data:', error);
-          });
-      }, []);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+
+  const paginatedData = data && data.data ? Object.values(data.data).slice(startIndex, endIndex) : [];
+
+  const totalPages = data && data.data ? Math.ceil(Object.values(data.data).length / itemsPerPage) : 0;
+  const currentSerialNumber = (currentPage - 1) * itemsPerPage + 1
+  const handleNextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
+  const handlePrevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  }
+ 
       
     const handlePush = () =>{
                 setPush(true)
@@ -175,9 +198,10 @@ const PendOrder = () => {
                     }
                    
                 }
+               
     }
    
-   
+
     return ( 
         <>
         <section>
@@ -203,19 +227,19 @@ const PendOrder = () => {
                         </div>
 
                         
-                        {data && data.data ? (
-                                Object.values(data.data).map((item, index) => {
+                        {paginatedData.map((item, index) => {
                                     const products = item.products[0]
+                                    const serialNumber = currentSerialNumber + index; 
                                     // const orderProd = products.order_product;
                                     return (
                                         <>
                                     <div key={index}>
                                         <div className="grid grid-cols-8 gap-3 border-b-2 h-14 px-2 text-xs items-center">
-                                        <p>{item.company_id}</p>
+                                        <p>{serialNumber}</p>
                                         <p>{item.Product}</p>
-                                        <p>{products.name}</p>
-                                        <p>{item.customer.name}</p>
-                                        <p>{item.NumberOfItem}</p>
+                                        <p>{products.order_product.order_id}</p>
+                                        <p>{products.order_product.createdAt}</p>
+                                        <p>{products.order_product.quantity}</p>
                                         <p>{item.OrderCateg}</p>
                                         <p onClick={() => handlePreview(index)} className="text_color cursor-pointer">View</p>
                                         <p onClick={() => handleAction(index)} className="p-2 px-3 bg_color cursor-pointer rounded-md text-white w-20 text-center">Push</p>
@@ -223,12 +247,8 @@ const PendOrder = () => {
                                     </div>
                                     </>
 
-                                    
-                                    );
-                                })
-                                ) : (
-                                <p>Jesus is Lord</p> // You can replace this with an appropriate message
-                                )}
+                                        );
+                                        })}
                         
 
 
@@ -336,10 +356,33 @@ const PendOrder = () => {
                                      )}
                                 </div>
 
-
+                      
+       
                       
                         </div>
-                    </div>            
+  
+                    </div>      
+                    {totalPages > 1 && (
+  <div className="pagination flex my-4 justify-center">
+    <button className="w-8 h-8 rounded-full border-2" onClick={handlePrevPage} disabled={currentPage === 1}>
+            <i className="fa fa-arrow-left"></i>
+    </button>
+    <div className="page-numbers px-2    mx-3">
+      {Array.from({ length: totalPages }, (_,i) => i + 1).map((pageNumber) => (
+        <button
+          key={pageNumber}
+          onClick={() => setCurrentPage(pageNumber)}
+          className={`${currentPage === pageNumber ?"text_color": ""} px-2 `}
+        >
+          {pageNumber}
+        </button>
+      ))}
+    </div>
+    <button className="w-8 h-8  rounded-full border-2" onClick={handleNextPage} disabled={currentPage === totalPages}>
+    <i className="fa fa-arrow-right "></i>
+    </button>
+  </div>
+)}      
                     </div>
                             <div className={preview?"overlay":""}></div>
                     </section>

@@ -4,11 +4,11 @@ import axios from 'axios'
 import { useEffect, useState } from "react";
 
 // import { useSearch } from './SearchContext';
-const PendDeliveries = () => {
+const ClosedDelivery = () => {
   
     useEffect(() => {
         // Make a GET request to the API
-        axios.get('https://api.lyncs.africa/staff/pending-deliveries')
+        axios.get('https://api.lyncs.africa/staff/closed-deliveries')
       
         .then((response) => {
 
@@ -56,31 +56,37 @@ const PendDeliveries = () => {
                         <Navbar />
                         <div className="mx-6 my-4 ">
                         <h3 className="text-2xl mt-2">Overview</h3>
-                        <h2 className="my-3">Pending Deliveries</h2>
+                        <h2 className="my-3">Closed Deliveries</h2>
                         <div className="bg-white pendingOrder ">
                             {/* <img src={AirPod} alt="air" /> */}
                         <div className="pendingList">                       
                              <div className="grid grid-cols-6 text-white gap-3 bg_color h-10 px-2 text-xs rounded-t-md items-center">
                         <p>S/N</p>
                         <p>Marchants</p>
-                        <p>Delivery Id</p>
-                        <p className="col-span-2">Delivered Product</p>
-                        <p>Product Available On</p>
+                        <p>Order Id</p>
+                        <p className="">Customer Name</p>
+                        <p>Customer Phone num</p>
+                        <p>Delivery Time</p>
+
                         
                         </div>
 
                         {paginatedData.map((item, index) => {
+                                    const products = item.products[0]
+
                              const serialNumber = currentSerialNumber + index; 
                         return (
                             
                             <div key={index}>
                             <div  className="grid grid-cols-6  gap-3 border-b-2 h-14 px-2 text-xs items-center">
                             <p>{serialNumber}</p>
-                            <p>{item.Marchants}</p>
-                            <p>{item.DeliveryId}</p>
-                            <p className="col-span-2">{item.DeliveredProduct}</p>
+                            <p>{item.marchant.name}</p>
+                            <p>{products.order_id}</p>
+                            <p className="">{item.customer.name}</p>
                             <p>{item.ProductAvailableOn}</p>
-                           
+                            <p>{item.delivered_at}</p>
+
+                            
                             </div>
                             </div>
                             )})}
@@ -116,4 +122,4 @@ const PendDeliveries = () => {
      );
 }
  
-export default PendDeliveries;
+export default ClosedDelivery;
