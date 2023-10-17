@@ -9,20 +9,20 @@ import { SearchProvider } from './SearchContext';
 
 import "./style.css"
 import AwaitingFeed from './AwaitingFeed';
-// import { AuthProvider } from './AuthContext';
+// import { Navigate } from 'react-router-dom';
+import { AuthProvider } from './AuthContext';
 
 function App() {
   // const navigate = useNavigate();
   return (
     < >
 
-<SearchProvider>
-   {/* <AuthProvider> */}
-   
-     
+
+   <AuthProvider>
+    <SearchProvider>
        <Routes>
-        
-        <Route path={'/Login'} element={<Login />} />
+       {/* <Route element={<Navigate to="/Login" />} path="/" /> */}
+        <Route path={'/*'} element={<Login />} />
         <Route path={'/'} element={<Dashboard />} />
         <Route path={'/Pending'} element={<PendOrder />} />
 
@@ -33,10 +33,9 @@ function App() {
         {/* <Route path="/" element={navigate("/login")} /> */}
         
         </Routes>
-       
-   
-     {/* </AuthProvider>  */}
-    </SearchProvider>
+        </SearchProvider>
+     </AuthProvider> 
+    
 
       </>
   );

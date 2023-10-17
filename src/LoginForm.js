@@ -5,6 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 import axios from 'axios'
 import { useAuth } from './AuthContext';
 
+
 const LoginForm = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -18,15 +19,15 @@ const LoginForm = () => {
 
     console.log(loggedIn);
 
-    
-
+    const { isAuthenticated, login } = useAuth();
+    console.log(isAuthenticated)
    
-    const { login } = useAuth();
+    
 
     const handleSubmit = async (e) => {
 
       e.preventDefault();
-      login();
+
       console.log(password);
       console.log(email);
       // console.log("This is not working")
@@ -68,6 +69,7 @@ const LoginForm = () => {
                 
               }, 2000);
               setLoggedIn(true);
+              login();
               setSuccess(response.data.message);
               toast.success(success, {
                 position: toast.POSITION.TOP_CENTER,

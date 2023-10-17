@@ -9,13 +9,13 @@ import Loader from "./Loader";
 import Pied from "./Pie";
 import Histo from "./Histo";
 import { useState, useEffect} from 'react'
-// import { useAuth } from './AuthContext';
+import { useAuth } from './AuthContext';
 
 
 
   
 const Dashboard = () => {
-    // const { isAuthenticated } = useAuth();
+    const { isAuthenticated } = useAuth();
 
     
     const [isLoading, setIsLoading] = useState(true);
@@ -51,7 +51,7 @@ const Dashboard = () => {
     
     return ( 
         <> 
-        {/* {isAuthenticated ? ( */}
+        {isAuthenticated ? (
             <section>
                 <div className="flex cont ">
                 <SideBar />
@@ -113,11 +113,11 @@ const Dashboard = () => {
                     </section>
             </div>
             </section>
-        {/* ):(
+         ):(
                     <div>
                         You didn't log in properly
                     </div>
-        )} */}
+        )} 
         </>
      );
 }
