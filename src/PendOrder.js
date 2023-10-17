@@ -1,7 +1,7 @@
 import SideBar from "./SideBar";
 import Navbar from "./Navbar";
 
-import Pod from "./images/airpod.png"
+// import Pod from "./images/airpod.png"
 import closeButton from "./images/forbidden-2.svg"
 import { useState, useEffect } from "react";
 import clanMarchant from "./images/lyncsMarch.png"
@@ -15,38 +15,38 @@ import axios from 'axios'
 
 const PendOrder = () => {
    
-    const pendOrderList = [
-        {
-            sn: 1,
-            Source: "Konga",
-            OrderId: "#783r",
-            CreatedAt: "20/6/2023",
-            NumberOfItem: 2,
-            OrderCateg: "Fashion And Electronics",
-            prodName:"Apple Airpod 2",
-            Price:"N140,000.00",
-            proImg: Pod,
-            Description:"The Apple AirPods 2nd Generation redefine the way you experience audio, setting new standards for wireless earbuds. With their iconic design, seamless connectivity, and unmatched sound quality, these earbuds are a true testament to Apple's commitment to innovation and user-centric technology.<br/>Key Features:",
-            View: "View",
-            Action: "Push"
+    // const pendOrderList = [
+    //     {
+    //         sn: 1,
+    //         Source: "Konga",
+    //         OrderId: "#783r",
+    //         CreatedAt: "20/6/2023",
+    //         NumberOfItem: 2,
+    //         OrderCateg: "Fashion And Electronics",
+    //         prodName:"Apple Airpod 2",
+    //         Price:"N140,000.00",
+    //         proImg: Pod,
+    //         Description:"The Apple AirPods 2nd Generation redefine the way you experience audio, setting new standards for wireless earbuds. With their iconic design, seamless connectivity, and unmatched sound quality, these earbuds are a true testament to Apple's commitment to innovation and user-centric technology.<br/>Key Features:",
+    //         View: "View",
+    //         Action: "Push"
 
-        },
-        {
-            sn: 2,
-            Source: "Jumia",
-            OrderId: "#4567",
-            CreatedAt: "20/6/2023",
-            NumberOfItem: 2,
-            OrderCateg: "Fashion And Electronics",
-            prodName:"Apple Airpod 45",
-            Price:"N50,000.00",
-            // proImg: Airpod,
-            Description:"The Apple AirPods 2nd Generation redefine the way you experience audio, setting new standards for wireless earbuds. With their iconic design, seamless connectivity, and unmatched sound quality, these earbuds are a true testament to Apple's commitment to innovation and user-centric technology.<br/>Key Features:",
-            View: "View",
-            Action: "Push"
+    //     },
+    //     {
+    //         sn: 2,
+    //         Source: "Jumia",
+    //         OrderId: "#4567",
+    //         CreatedAt: "20/6/2023",
+    //         NumberOfItem: 2,
+    //         OrderCateg: "Fashion And Electronics",
+    //         prodName:"Apple Airpod 45",
+    //         Price:"N50,000.00",
+    //         // proImg: Airpod,
+    //         Description:"The Apple AirPods 2nd Generation redefine the way you experience audio, setting new standards for wireless earbuds. With their iconic design, seamless connectivity, and unmatched sound quality, these earbuds are a true testament to Apple's commitment to innovation and user-centric technology.<br/>Key Features:",
+    //         View: "View",
+    //         Action: "Push"
 
-        }
-    ]
+    //     }
+    // ]
     const options = [
         {
           id: 1,
@@ -131,14 +131,14 @@ const PendOrder = () => {
       useEffect(() => {
           // Make a GET request to the API
           axios.get('https://api.lyncs.africa/staff/pending-orders')
+        
           .then((response) => {
+
               // Handle the successful response
               setData(response.data.data);
               console.log(response.data.data)
-              const firstItem = response.data.data[0];
-              console.log(firstItem)
-              console.log(firstItem.company_id)
-          })
+             
+                      })
           .catch((error) => {
               // Handle errors
               console.error('Error fetching data:', error);
@@ -203,26 +203,32 @@ const PendOrder = () => {
                         </div>
 
                         
-                        {
-                        // Array.isArray(data) ?
-                        Object.values(data).map((item,index) => {
-                         
-                            return (
-                            <div key={index}>
-                            <div  className="grid grid-cols-8  gap-3 border-b-2 h-14 px-2 text-xs items-center">
-                            <p>{item.company_id}</p>
-                            <p>{item.Product}</p>
-                            <p>{item.OrderId}</p>
-                            <p>{item.CreatedAt}</p>
-                            <p>{item.NumberOfItem}</p>
-                            <p>{item.OrderCateg}</p>
-                            <p onClick={()=>handlePreview(index)} className="text_color cursor-pointer">View</p>
-                            <p onClick={()=>handleAction(index)} className="p-2 px-3 bg_color cursor-pointer rounded-md text-white w-20 text-center">{item.Action}</p>
-                            </div>
-                            </div>
-                        )})
-                        // : (<>Jesus is Lord</>)
-                    }
+                        {data && data.data ? (
+                                Object.values(data.data).map((item, index) => {
+                                    const products = item.products[0]
+                                    // const orderProd = products.order_product;
+                                    return (
+                                        <>
+                                    <div key={index}>
+                                        <div className="grid grid-cols-8 gap-3 border-b-2 h-14 px-2 text-xs items-center">
+                                        <p>{item.company_id}</p>
+                                        <p>{item.Product}</p>
+                                        <p>{products.name}</p>
+                                        <p>{item.customer.name}</p>
+                                        <p>{item.NumberOfItem}</p>
+                                        <p>{item.OrderCateg}</p>
+                                        <p onClick={() => handlePreview(index)} className="text_color cursor-pointer">View</p>
+                                        <p onClick={() => handleAction(index)} className="p-2 px-3 bg_color cursor-pointer rounded-md text-white w-20 text-center">Push</p>
+                                        </div>
+                                    </div>
+                                    </>
+
+                                    
+                                    );
+                                })
+                                ) : (
+                                <p>Jesus is Lord</p> // You can replace this with an appropriate message
+                                )}
                         
 
 
@@ -237,16 +243,16 @@ const PendOrder = () => {
                                     <h2 className="text-sm text-gray-400">See product information</h2>
                                     <div className="flex justify-between gap-10 mt-4 ">
                                         <div className="prodImg  w-full">
-                                            <img src={pendOrderList[selectedItemIndex].proImg} alt="airpod" />
+                                            <img src={data.data[selectedItemIndex].products[0].picture1} alt="airpod" />
                                         </div>
                                         <div className="flex-col flex-container">
                                             <h5 className="text-sm text-gray-400">Product Name</h5>
-                                            <h5 className=" text-black font-bold mt-2">{pendOrderList[selectedItemIndex].prodName}</h5>
+                                            <h5 className=" text-black font-bold mt-2">{data.data[selectedItemIndex].products[0].name}</h5>
                                             <h5 className="text-sm text-gray-400 mt-3">Price</h5>
-                                            <h5 className=" text-black font-bold mt-1">{pendOrderList[selectedItemIndex].Price}</h5>
+                                            <h5 className=" text-black font-bold mt-1">{data.data[selectedItemIndex].products[0].price}</h5>
                                             <h5 className="text-sm text-gray-400 mt-3">Description</h5>
                                             <p className="text-xs mt-2">
-                                            {pendOrderList[selectedItemIndex].Description}
+                                            {data.data[selectedItemIndex].products[0].description}
                                             </p>
                                         </div>
                                     </div>

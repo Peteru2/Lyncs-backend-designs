@@ -10,13 +10,14 @@ import Pied from "./Pie";
 import Histo from "./Histo";
 import { useState, useEffect} from 'react'
 import { useAuth } from './AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 
 
   
 const Dashboard = () => {
     const { isAuthenticated } = useAuth();
-
+    const navigate = useNavigate();
     
     const [isLoading, setIsLoading] = useState(true);
 
@@ -48,7 +49,10 @@ const Dashboard = () => {
         },
         
     ]
-    
+    if (!isAuthenticated) {
+        navigate('/Login');
+        return null; // Return null to prevent rendering anything in this component
+      }
     return ( 
         <> 
         {isAuthenticated ? (
