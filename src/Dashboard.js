@@ -74,7 +74,7 @@ const Dashboard = () => {
                         {overview.map((item,index)=>{
                             return(
 
-                                <div className=" mr-2 my-2 bg-white p-6 w-64 flex-wrap rounded-md">                               
+                                <div className=" mr-2 my-2 bg-white p-6 card flex-wrap rounded-md">                               
                              <div className="flex ">
                                   <div className="">
                                     <div>
@@ -108,7 +108,7 @@ const Dashboard = () => {
                             )
                         })}
                     </div>
-                    <div className="flex flex-wrap justify-center chart" >     
+                    <div className="flex flex-wrap chartWidth justify-center chart" >     
                                     <Histo />
                                     <Pied />                     
                      </div>
