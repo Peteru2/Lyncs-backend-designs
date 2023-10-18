@@ -9,9 +9,13 @@ import AwaitIcon1 from "./images/Alarm2.svg"
 import AwaitIcon2 from "./images/Alarm.svg"
 import ClosedIcon1 from "./images/CalendarX2.svg"
 import ClosedIcon2 from "./images/CalendarX.svg"
+import { useAuth } from './AuthContext';
+
 
 import { Link, useLocation } from "react-router-dom";
 const SideBar = () => {
+    const { logout } = useAuth();
+
     const navSideList = [
         {
             title: "Dashboard",
@@ -52,9 +56,13 @@ const SideBar = () => {
         },
 
 
-
     ]
     const location = useLocation()
+
+    const handleLogout = () =>{
+       logout()
+    }
+
     return ( 
         <>
             <aside className="bg-white sideBar border-r-2 ">
@@ -77,8 +85,8 @@ const SideBar = () => {
             </div>
             <div className=" text-gray-500 logout border-t-2 py-6">
                    
-             <button className="text-sm ml-6">
-               <Link to={'/Login'}><i className="fa fa-sign-out mr-5 "></i> <span className="">Logout</span></Link>
+             <button className="text-sm ml-6" onClick={handleLogout}>
+               <i className="fa fa-sign-out mr-5 "></i> <span className="">Logout</span>
              </button>
             </div>
             </aside>

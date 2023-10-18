@@ -364,7 +364,7 @@ const PendOrder = () => {
                     </div>      
                     {totalPages > 1 && (
   <div className="pagination flex my-4 justify-center">
-    <button className="w-8 h-8 rounded-full border-2" onClick={handlePrevPage} disabled={currentPage === 1}>
+    <button className="w-10 h-10 rounded-full border-2" onClick={handlePrevPage} disabled={currentPage === 1}>
             <i className="fa fa-arrow-left"></i>
     </button>
     <div className="page-numbers px-2    mx-3">
@@ -378,7 +378,7 @@ const PendOrder = () => {
         </button>
       ))}
     </div>
-    <button className="w-8 h-8  rounded-full border-2" onClick={handleNextPage} disabled={currentPage === totalPages}>
+    <button className="w-10 h-10  rounded-full border-2" onClick={handleNextPage} disabled={currentPage === totalPages}>
     <i className="fa fa-arrow-right "></i>
     </button>
   </div>

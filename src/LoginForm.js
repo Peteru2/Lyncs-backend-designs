@@ -19,8 +19,8 @@ const LoginForm = () => {
 
     console.log(loggedIn);
 
-    const { isAuthenticated, login } = useAuth();
-    console.log(isAuthenticated)
+    const { login } = useAuth();
+    // console.log(isAuthenticated)
    
     
 

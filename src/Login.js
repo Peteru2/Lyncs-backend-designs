@@ -27,7 +27,7 @@ const Login = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="LoginPage2  py-32 justify-center">
+                    <div className="LoginPage2  items-center justify-center">
                         <div className="">
                             <h2 className="font-bold">Login to backend</h2>
                             <h2 className="text-gray-500 text-sm mt-1">Fill in the appropriate details</h2>

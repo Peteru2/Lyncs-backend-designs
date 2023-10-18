@@ -6,12 +6,12 @@ export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const login = () => {
-    // Simulate a successful login
+    
     setIsAuthenticated(true);
   };
 
   const logout = () => {
-    // Simulate a logout
+
     setIsAuthenticated(false);
   };
 
