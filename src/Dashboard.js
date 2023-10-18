@@ -69,12 +69,12 @@ const Dashboard = () => {
                             <img src={Funnel} alt="funnel"/>
                         </div>
                         </div>
-                        <div className="flex  mt-7 w-full flex-wrap">
+                        <div className="flex justify-between mt-7 w-full flex-wrap">
                     
                         {overview.map((item,index)=>{
                             return(
 
-                                <div className=" mr-2 my-2 bg-white p-6 card flex-wrap rounded-md">                               
+                                <div className="justify-between w-full my-2 bg-white p-6 card flex-wrap rounded-md">                               
                              <div className="flex ">
                                   <div className="">
                                     <div>
@@ -109,8 +109,8 @@ const Dashboard = () => {
                         })}
                     </div>
                     <div className="flex flex-wrap chartWidth justify-center chart" >     
-                                    <Histo />
-                                    <Pied />                     
+                                    <Histo className="mr-10"/>
+                                    <Pied className="ml-10"/>                     
                      </div>
                     </div>
             )}

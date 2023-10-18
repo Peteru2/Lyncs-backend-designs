@@ -1,28 +1,17 @@
 import SideBar from "./SideBar";
 import Navbar from "./Navbar";
-import axios from 'axios'
-import { useEffect, useState } from "react";
+
+import useFetch from "./useFetch";
+
+import {  useState } from "react";
+import Pagination from './Pagination';
+
 
 // import { useSearch } from './SearchContext';
 const PendDeliveries = () => {
+    const {data } = useFetch('https://api.lyncs.africa/staff/pending-orders')
   
-    useEffect(() => {
-        // Make a GET request to the API
-        axios.get('https://api.lyncs.africa/staff/pending-deliveries')
-      
-        .then((response) => {
-
-            // Handle the successful response
-            setData(response.data.data);
-            console.log(response.data.data)
-           
-                    })
-        .catch((error) => {
-            // Handle errors
-            console.error('Error fetching data:', error);
-        });
-    }, []);
-      const [data, setData] = useState([]);
+   
 
       const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10; // Number of items to display per page
@@ -34,17 +23,7 @@ const PendDeliveries = () => {
 
   const totalPages = data && data.data ? Math.ceil(Object.values(data.data).length / itemsPerPage) : 0;
   const currentSerialNumber = (currentPage - 1) * itemsPerPage + 1
-  const handleNextPage = () => {
-    if (currentPage < totalPages) {
-      setCurrentPage(currentPage + 1);
-    }
-  };
-
-  const handlePrevPage = () => {
-    if (currentPage > 1) {
-      setCurrentPage(currentPage - 1);
-    }
-  }
+  
  
      
     return ( 
@@ -87,27 +66,9 @@ const PendDeliveries = () => {
 
 </div>
 </div>
-                    {totalPages > 1 && (
-                    <div className="pagination flex my-4 justify-center">
-                        <button className="w-8 h-8 rounded-full border-2" onClick={handlePrevPage} disabled={currentPage === 1}>
-                                <i className="fa fa-arrow-left"></i>
-                        </button>
-                        <div className="page-numbers px-2    mx-3">
-                        {Array.from({ length: totalPages }, (_,i) => i + 1).map((pageNumber) => (
-                            <button
-                            key={pageNumber}
-                            onClick={() => setCurrentPage(pageNumber)}
-                            className={`${currentPage === pageNumber ?"text_color": ""} px-2 `}
-                            >
-                            {pageNumber}
-                            </button>
-                        ))}
-                        </div>
-                        <button className="w-8 h-8  rounded-full border-2" onClick={handleNextPage} disabled={currentPage === totalPages}>
-                        <i className="fa fa-arrow-right "></i>
-                        </button>
-                    </div>
-                    )}      
+{totalPages > 1 && (
+                     <Pagination totalPages={totalPages} onPageChange={setCurrentPage} />
+                             )}  
                             </div>
                             </section>
                     </div>

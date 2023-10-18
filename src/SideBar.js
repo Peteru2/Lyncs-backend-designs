@@ -75,7 +75,7 @@ const SideBar = () => {
                     {navSideList.map((item,index) =>{
                         return(
                     <div key={index} className={`flex text-sm pl-6 my-6 py-2 cursor-pointer  ${location.pathname === item.url ? "Sidebar-border" :""} `}>
-                      <Link to={item.url} className="flex items-center">  { location.pathname=== item.url ? (<img src={item.icon1} alt="l" className="fa fa-dashbord mr-5 "/>) :(<img src={item.icon2} alt="l" className="fa fa-dashbord mr-5 "/>)}<p className={location.pathname === item.url ? "text_color" :""}>{item.title}</p></Link>
+                      <Link to={item.url} className="flex items-center outline-none">  { location.pathname=== item.url ? (<img src={item.icon1} alt="l" className="fa fa-dashbord mr-5 "/>) :(<img src={item.icon2} alt="l" className="fa fa-dashbord mr-5 "/>)}<p className={location.pathname === item.url ? "text_color" :""}>{item.title}</p></Link>
                     </div>
 
                     )

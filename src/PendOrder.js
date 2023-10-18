@@ -3,6 +3,7 @@ import Navbar from "./Navbar";
 
 // import Pod from "./images/airpod.png"
 import closeButton from "./images/forbidden-2.svg"
+import useFetch from "./useFetch";
 import { useState, useEffect } from "react";
 import clanMarchant from "./images/lyncsMarch.png"
 import kongaMarchant from "./images/konga.png"
@@ -10,43 +11,12 @@ import Jiji from "./images/Jiji.png"
 import Ali from "./images/ali.png"
 import Success from "./images/success.png"
 import MarketImg from "./MarketImg";
-import axios from 'axios'
+import Pagination from './Pagination';
 
 
 const PendOrder = () => {
    
-    // const pendOrderList = [
-    //     {
-    //         sn: 1,
-    //         Source: "Konga",
-    //         OrderId: "#783r",
-    //         CreatedAt: "20/6/2023",
-    //         NumberOfItem: 2,
-    //         OrderCateg: "Fashion And Electronics",
-    //         prodName:"Apple Airpod 2",
-    //         Price:"N140,000.00",
-    //         proImg: Pod,
-    //         Description:"The Apple AirPods 2nd Generation redefine the way you experience audio, setting new standards for wireless earbuds. With their iconic design, seamless connectivity, and unmatched sound quality, these earbuds are a true testament to Apple's commitment to innovation and user-centric technology.<br/>Key Features:",
-    //         View: "View",
-    //         Action: "Push"
-
-    //     },
-    //     {
-    //         sn: 2,
-    //         Source: "Jumia",
-    //         OrderId: "#4567",
-    //         CreatedAt: "20/6/2023",
-    //         NumberOfItem: 2,
-    //         OrderCateg: "Fashion And Electronics",
-    //         prodName:"Apple Airpod 45",
-    //         Price:"N50,000.00",
-    //         // proImg: Airpod,
-    //         Description:"The Apple AirPods 2nd Generation redefine the way you experience audio, setting new standards for wireless earbuds. With their iconic design, seamless connectivity, and unmatched sound quality, these earbuds are a true testament to Apple's commitment to innovation and user-centric technology.<br/>Key Features:",
-    //         View: "View",
-    //         Action: "Push"
-
-    //     }
-    // ]
+    
     const options = [
         {
           id: 1,
@@ -127,23 +97,8 @@ const PendOrder = () => {
         setPush(true);
         setCont(false)
       }
-      useEffect(() => {
-        // Make a GET request to the API
-        axios.get('https://api.lyncs.africa/staff/pending-orders')
       
-        .then((response) => {
-
-            // Handle the successful response
-            setData(response.data.data);
-            console.log(response.data.data)
-           
-                    })
-        .catch((error) => {
-            // Handle errors
-            console.error('Error fetching data:', error);
-        });
-    }, []);
-      const [data, setData] = useState([]);
+      const {data } = useFetch('https://api.lyncs.africa/staff/pending-orders')
 
       const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10; // Number of items to display per page
@@ -155,17 +110,6 @@ const PendOrder = () => {
 
   const totalPages = data && data.data ? Math.ceil(Object.values(data.data).length / itemsPerPage) : 0;
   const currentSerialNumber = (currentPage - 1) * itemsPerPage + 1
-  const handleNextPage = () => {
-    if (currentPage < totalPages) {
-      setCurrentPage(currentPage + 1);
-    }
-  };
-
-  const handlePrevPage = () => {
-    if (currentPage > 1) {
-      setCurrentPage(currentPage - 1);
-    }
-  }
  
       
     const handlePush = () =>{
@@ -363,26 +307,8 @@ const PendOrder = () => {
   
                     </div>      
                     {totalPages > 1 && (
-  <div className="pagination flex my-4 justify-center">
-    <button className="w-10 h-10 rounded-full border-2" onClick={handlePrevPage} disabled={currentPage === 1}>
-            <i className="fa fa-arrow-left"></i>
-    </button>
-    <div className="page-numbers px-2    mx-3">
-      {Array.from({ length: totalPages }, (_,i) => i + 1).map((pageNumber) => (
-        <button
-          key={pageNumber}
-          onClick={() => setCurrentPage(pageNumber)}
-          className={`${currentPage === pageNumber ?"text_color": ""} px-2 `}
-        >
-          {pageNumber}
-        </button>
-      ))}
-    </div>
-    <button className="w-10 h-10  rounded-full border-2" onClick={handleNextPage} disabled={currentPage === totalPages}>
-    <i className="fa fa-arrow-right "></i>
-    </button>
-  </div>
-)}      
+                     <Pagination totalPages={totalPages} onPageChange={setCurrentPage} />
+                             )}
                     </div>
                             <div className={preview?"overlay":""}></div>
                     </section>
