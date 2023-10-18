@@ -108,9 +108,11 @@ const Dashboard = () => {
                             )
                         })}
                     </div>
-                    <div className="flex flex-wrap chartWidth justify-center chart" >     
-                                    <Histo className="mr-10"/>
-                                    <Pied className="ml-10"/>                     
+                    <div className="flex  justify-center chart">
+                            <div className="flex justify-between w-full flex-wrap">  
+                                    <Histo />
+                                    <Pied />                     
+                     </div>
                      </div>
                     </div>
             )}

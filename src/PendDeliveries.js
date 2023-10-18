@@ -2,19 +2,19 @@ import SideBar from "./SideBar";
 import Navbar from "./Navbar";
 
 import useFetch from "./useFetch";
+import Pagination from './Pagination';
 
 import {  useState } from "react";
-import Pagination from './Pagination';
 
 
 // import { useSearch } from './SearchContext';
 const PendDeliveries = () => {
-    const {data } = useFetch('https://api.lyncs.africa/staff/pending-orders')
+    const {data } = useFetch('https://api.lyncs.africa/staff/pending-deliveries')
   
    
 
       const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 10; // Number of items to display per page
+  const itemsPerPage = 10; 
 
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
