@@ -18,9 +18,9 @@ const Pagination = ({ totalPages, onPageChange }) => {
   };
 
   return (
-    <div className="pagination flex my-4 justify-center items-center">
+    <div className="flex my-4 justify-center items-center">
       <button
-        className="w-10 h-10 rounded-full border-2"
+        className="w-10 h-10 rounded-full  bg-white border-2 border-gray-100"
         onClick={handlePrevPage}
         disabled={currentPage === 1}
       >
@@ -41,7 +41,7 @@ const Pagination = ({ totalPages, onPageChange }) => {
         ))}
       </div>
       <button
-        className="w-10 h-10 rounded-full border-2"
+        className="w-10 h-10 rounded-full  bg-white border-2 border-gray-100"
         onClick={handleNextPage}
         disabled={currentPage === totalPages}
       >

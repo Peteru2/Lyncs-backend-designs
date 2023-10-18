@@ -10,11 +10,7 @@ const LoginForm = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [loggedIn, setLoggedIn] = useState(false);
-    const [error, setError] = useState('i')
-    const [success, setSuccess] = useState('')
-   
-    console.log(success);
-
+    
     const navigate = useNavigate()
 
     console.log(loggedIn);
@@ -35,20 +31,20 @@ const LoginForm = () => {
       // Perform API call here and check login
       const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
                 if (!email.trim()) {
-                  setError("Email is required!!")
-                  toast.error(error, {
+                 
+                  toast.error("Email is required!!", {
                     position: toast.POSITION.TOP_CENTER,
                   });               
                 } else if (!emailRegex.test(email)) {
-                  setError("Invalid Email Format")
-                  toast.error(error, {
+
+                  toast.error("Invalid Email Format", {
                     position: toast.POSITION.TOP_CENTER,
                   }); 
                 }
      
       else if(password === ""){
-        setError("Password cannot be empty cannot be Empty")
-        toast.error(error, {
+        
+        toast.error("Password cannot be empty cannot be Empty", {
           position: toast.POSITION.TOP_CENTER,
         }); 
         
@@ -70,67 +66,20 @@ const LoginForm = () => {
               }, 2000);
               setLoggedIn(true);
               login();
-              setSuccess(response.data.message);
-              toast.success(success, {
+              toast.success(response.data.message, {
                 position: toast.POSITION.TOP_CENTER,
               }); 
       })
       .catch((err)=>{
         console.log(err)
-        setError(err);
-            toast.error(error, {
+       
+            toast.error(err, {
               position: toast.POSITION.TOP_CENTER,
             }); 
       })
 
       }
-      // try {
-
-          
-    
-      //   const response = await fetch('https://api.lyncs.africa/staff/login', {
-      //     method: 'POST',
-      //     headers: {
-      //       'Content-Type': 'application/json',
-      //     },
-      //     body: JSON.stringify({ email, password }),
-      //   });
-      // console.log(response)
-       
-      //     const data = await response.json();
-      //     if (data.exists) {
-      //       if (data.password){
-      //         navigate('/');
-      //         setLoggedIn(true);
-      //         setSuccess('It worked.');
-      //         toast.success(success, {
-      //           position: toast.POSITION.TOP_CENTER,
-      //         }); 
-      //         console.log("it has worked")
-      //       }
-      //       else{ 
-      //         setError('Invalid Credentials')
-      //         toast.error(error, { 
-      //               position: toast.POSITION.TOP_CENTER, 
-      //             }); 
-      //       }
-            
-      //     } else {
-      //       setError('Staff not found');
-      //       toast.error(error, {
-      //         position: toast.POSITION.TOP_CENTER,
-      //       }); 
-      //     }
-       
-      // }
-      //  catch (error) {
-      //   console.error('API request failed:', error);
-      //   setError('API request failed:', error)
-      //   toast.error(error, {
-      //     position: toast.POSITION.TOP_CENTER,
-      //   }); 
-      // }
-    // toast("Default Notification !");
+      
     };
 
     return ( 
