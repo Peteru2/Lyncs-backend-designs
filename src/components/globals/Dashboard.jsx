@@ -10,8 +10,6 @@ const DashboardLayout = () => {
     //     toggleIsDashboardOpen: state.toggleIsDashboardOpen,
     // }));
 
-
-
     return (
         <>
             <Navbar handleToggle={() => toggleIsDashboardOpen()} />

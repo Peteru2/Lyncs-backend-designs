@@ -4,9 +4,10 @@ import FilterListIcon from '@mui/icons-material/FilterList';
 // import OverviewSkeleton from '../../components/skeleton/OverviewLinksCard.jsx';
 import { IconButton, Menu, MenuItem } from '@mui/material';
 import OverviewCards from '../components/overview/OverviewCards';
+import OverviewSkeleton from '../components/overview/OverviewSkeleton';
 
 const Overview = () => {
-    const [isLoading, setIsLoading] = useState(false)
+    const [isLoading, setIsLoading] = useState(true)
     const data = []
     // const { data = {}, isLoading, isError, error } = useQuery('overview',
     //     () => clientHttp.get('/company/dashboard').then(res => res?.data?.data), { retry: Infinity });
@@ -50,7 +51,7 @@ const Overview = () => {
                     </Menu>
                 </div>
             </div>
-            {isLoading ? "" : <OverviewCards />}
+            {isLoading ? <OverviewSkeleton /> : <OverviewCards />}
         </>
     );
 };
