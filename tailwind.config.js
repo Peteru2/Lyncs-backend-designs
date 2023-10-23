@@ -1,21 +1,20 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+export default {
   content: [
-    "./src/**/*.{html,js,jsx,ts,tsx}",
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        loginImg: 'url(./images/lyncs-login-bg.svg)'
-      },
       colors: {
         primary: "#F18701",
+        appGreen: "#00AF54",
+        appRed: "#EE2E31",
       },
-      backgroundColor: {
-        bgPrimary: "#F18701",
+      backgroundImage: {
+        loginImg: "url('/login-backgroundimage.png')",
       },
     },
   },
   plugins: [],
 }
-
