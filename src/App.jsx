@@ -4,6 +4,7 @@ import DashboardLayout from './components/globals/Dashboard'
 import Login from './views/Login'
 import Overview from './views/Overview'
 import './App.css'
+import PendingOrders from './views/PendingOrder'
 
 function App() {
 
@@ -13,6 +14,7 @@ function App() {
         <Route path='' element={<Login />} />
         <Route path='/dashboard' element={<DashboardLayout />}>
           <Route path='overview' element={<Overview />} />
+          <Route path='pending-overview' element={<PendingOrders />} />
         </Route>
       </Routes>
     </Router>
