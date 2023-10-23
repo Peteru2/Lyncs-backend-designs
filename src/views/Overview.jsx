@@ -7,7 +7,7 @@ import OverviewCards from '../components/overview/OverviewCards';
 import OverviewSkeleton from '../components/overview/OverviewSkeleton';
 
 const Overview = () => {
-    const [isLoading, setIsLoading] = useState(true)
+    const [isLoading, setIsLoading] = useState(false)
     const data = []
     // const { data = {}, isLoading, isError, error } = useQuery('overview',
     //     () => clientHttp.get('/company/dashboard').then(res => res?.data?.data), { retry: Infinity });
